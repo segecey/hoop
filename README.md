@@ -3,7 +3,7 @@ Sapphire
 
 Cocoa & UIKit for Crystal Lang
 
-``
+````
 require "sapphire"
 include Sapphire
 
@@ -11,7 +11,7 @@ username_text_field =  NSTextField.new NSRect.new(0, 170, 200, 20).to_objc
 password_text_field = NSTextField.new NSRect.new(0, 150, 200, 20).to_objc
 login_button = NSButton.new NSRect.new(0,150,100,50).to_objc
 login_button.title = "Login"
-``
+````
 
 Contributing
 ---------
