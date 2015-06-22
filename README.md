@@ -3,6 +3,9 @@ Sapphire
 
 Cocoa & UIKit for Crystal Lang
 
+## Screenshot
+# ![Screenshot](https://raw.githubusercontent.com/0x73/sapphire/master/assets/example_app.png)
+
 
 ```crystal
 require "./src/sapphire"
