@@ -3,7 +3,7 @@ Sapphire
 
 Cocoa & UIKit for Crystal Lang
 
-Thanks to the past crocoa
+[Thanks to the past crocoa](https://github.com/manastech/crocoa)
 =======
 
 ```crystal
