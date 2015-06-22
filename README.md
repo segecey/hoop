@@ -16,7 +16,7 @@ login_button.set_title = "Login"
 puts login_button.title
 ```
 
-Thanks to the past [Crocoa](https://github.com/manastech/crocoa)
+Thanks to the broken [Crocoa](https://github.com/manastech/crocoa)
 =======
 
 Contributing
