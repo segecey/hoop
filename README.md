@@ -3,8 +3,6 @@ Sapphire
 
 Cocoa & UIKit for Crystal Lang
 
-Thanks to the past [Crocoa](https://github.com/manastech/crocoa)
-=======
 
 ```crystal
 require "sapphire"
@@ -17,6 +15,9 @@ login_button.set_title = "Login"
 
 puts login_button.title
 ```
+
+Thanks to the past [Crocoa](https://github.com/manastech/crocoa)
+=======
 
 Contributing
 ---------
