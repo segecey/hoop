@@ -31,8 +31,8 @@ lib LibObjC
   fun objc_getClassList(Class*, UInt64) : UInt64
   fun class_getSuperclass(Class) : Class
 
-  #fun objc_msgSend(UInt8*, SEL, ...) : UInt8*
-  fun objc_msgSend(...) : UInt8*
+  fun objc_msgSend(UInt8*, SEL, ...) : UInt8*
+  #fun objc_msgSend(...) : UInt8*
 
   fun sel_registerName(UInt8*) : SEL
   fun sel_getName(SEL) : UInt8*

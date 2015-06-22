@@ -1,7 +1,5 @@
 
 class Object
-  # to_objc is called in order to get value required to be
-  # passed to objc
   abstract def to_objc
 end
 
@@ -63,7 +61,7 @@ end
 
 class String
   def to_nsstring
-    NSString.new self
+    NSString.new(self).to_objc
   end
 
   def to_objc
@@ -77,6 +75,7 @@ struct Tuple
 
   end
 end
+
 
 module Sapphire
   def self.send_msg(objc_target, selector_name, *args)
