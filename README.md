@@ -5,7 +5,7 @@ Cocoa & UIKit for Crystal Lang
 
 
 ```crystal
-require "sapphire"
+require "./src/sapphire"
 include Sapphire
 
 username_text_field =  NSTextField.new NSRect.new(0, 170, 200, 20).to_objc
