@@ -94,13 +94,14 @@ module Sapphire
     end
 
     macro export_class(objc_class_name = nil)
-      $_{{@type.name.id}}_classPair = LibObjC.objc_allocateClassPair({{@type.superclass}}.nsclass.obj, {{@type.name}}, 0_u32)
+      $_{{@type.name.id}}_classPair = LibObjC.objc_allocateClassPair({{@type.superclass}}.nsclass.obj, {{@type.name.id}}.nsclass.obj as Pointer(UInt8), 0_u32)
       LibObjC.objc_registerClassPair($_{{@type.name.id}}_classPair)
       $x_{{@type.name.id}}_assoc_key = "crystal_obj"
 
       def self.nsclass
         NSClass.new $_{{@type.name.id}}_classPair
       end
+
 
       def initialize
         initialize(Sapphire.send_msg(nsclass.send_msg("alloc"), "init"))

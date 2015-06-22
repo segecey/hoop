@@ -56,6 +56,7 @@ end
 
 struct Pointer(T)
   def to_objc
+    self
   end
 end
 
