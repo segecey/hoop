@@ -23,7 +23,7 @@ Thanks to the broken [Crocoa](https://github.com/manastech/crocoa)
 =======
 
 Contributing
----------
+============
 
 1. Fork it ( https://github.com/0x73/sapphire/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
