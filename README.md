@@ -1,4 +1,4 @@
-Sapphire [![Build Status](https://travis-ci.org/amerobin/sapphire.svg)](https://travis-ci.org/amerobin/sapphire)
+Sapphire
 =======
 
 Cocoa & UIKit for Crystal Lang
