@@ -1,11 +1,7 @@
-Sapphire
+Sapphire [![Build Status](https://travis-ci.org/amerobin/sapphire.svg)](https://travis-ci.org/amerobin/sapphire)
 =======
 
 Cocoa & UIKit for Crystal Lang
-
-## Screenshot
-# ![Screenshot](https://raw.githubusercontent.com/0x73/sapphire/master/assets/example_app.png)
-
 
 ```crystal
 require "./src/sapphire"
@@ -18,6 +14,9 @@ login_button.set_title = "Login"
 
 puts login_button.title
 ```
+
+## Screenshot
+# ![Screenshot](https://raw.githubusercontent.com/0x73/sapphire/master/assets/example_app.png)
 
 Thanks to the broken [Crocoa](https://github.com/manastech/crocoa)
 =======
