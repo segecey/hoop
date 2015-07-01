@@ -3,10 +3,8 @@ include Sapphire
 
 class MyAppDelegate < NSObject
 	export_class
-	objc_class
-
   	LibObjC.class_addProtocol(MyAppDelegate.nsclass.obj, LibObjC.objc_getProtocol("NSApplicationDelegate"))
-
+  	ns_log "hey merhaba"
   	def did_finish_launching(notification)
     	ns_log "didFinishLaunching"
   	end

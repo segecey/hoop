@@ -39,10 +39,7 @@ module Sapphire
       total = LibObjC.objc_getClassList(nil, 0u64)
       buffer = Pointer(LibObjC::Class).malloc(total)
       LibObjC.objc_getClassList(buffer, total)
-      buffer
-        .to_slice(total)
-        .map { |x| NSClass.new x }
-        .each do |nsclass|
+      buffer.to_slice(total).map { |x| NSClass.new x }.each do |nsclass|
         yield nsclass
       end
     end

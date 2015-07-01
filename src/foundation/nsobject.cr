@@ -94,7 +94,8 @@ module Sapphire
     end
 
     macro export_class(objc_class_name = nil)
-      $_{{@type.name.id}}_classPair = LibObjC.objc_allocateClassPair({{@type.superclass}}.nsclass.obj, {{@type.name.id}}.nsclass.obj as Pointer(UInt8), 0_u32)
+      objc_class
+      $_{{@type.name.id}}_classPair = LibObjC.objc_allocateClassPair({{@type.superclass}}.nsclass.obj, {{@type.name.id}}.nsclass as Pointer(UInt8), 0_u32)
       LibObjC.objc_registerClassPair($_{{@type.name.id}}_classPair)
       $x_{{@type.name.id}}_assoc_key = "crystal_obj"
 
@@ -145,7 +146,7 @@ module Sapphire
     end
 
     def to_objc
-      @obj
+      @obj.not_nil!
     end
 
     def ==(other : NSObject)

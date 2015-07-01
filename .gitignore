@@ -1,4 +1,3 @@
 .crystal
 *.app
 *.nib
-test.cr
