@@ -33,6 +33,9 @@ ns_log "app launched"
 
 NSApp.activate_ignoring_other_apps = true
 NSApp.run
+
+# run
+# crystal cocoa.cr
 ```
 
 ## Screenshot
