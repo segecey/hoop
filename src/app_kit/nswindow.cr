@@ -3,10 +3,8 @@ module Sapphire
     import_class
 
     objc_method "initWithContentRect:styleMask:backing:defer:", ["NSRect","NSUInteger","NSBackingStoreType","BOOL"], "id", "initialize"
-
-    # TODO: options[:sret] in order to use objc_msgSend_stret
+    
     objc_method "cascadeTopLeftFromPoint:", ["NSPoint"], "void", "cascade_top_left_from_point"
-    # objc_method "cascadeTopLeftFromPoint:", [:NSPoint], :NSPoint, "cascade_top_left_from_point="
 
     objc_method "title", nil, "NSString"
     objc_method "setTitle:", ["NSString"], "void", "title="

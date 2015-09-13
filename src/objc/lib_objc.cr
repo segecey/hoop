@@ -5,7 +5,7 @@ lib LibObjC
   alias IMP = Void*
   alias IMPAlloc = Pointer(UInt8), LibObjC::SEL -> UInt8*
   alias IMPAllocWithZone = Pointer(UInt8), LibObjC::SEL, Pointer(UInt8) -> UInt8*
-  
+
 
   type Protocol = Void*
 
@@ -41,11 +41,11 @@ lib LibObjC
   fun objc_registerClassPair(Class) : Void
 
   enum AssociationPolicy : Int32
-    ASSIGN  = 0u64,
-    RETAIN_NONATOMIC  = 1u64,
-    COPY_NONATOMIC  = 3u64,
-    RETAIN  = 01401u64,
-    COPY  = 01403u64
+    ASSIGN  = 0x0u64,
+    RETAIN_NONATOMIC  = 0x1u64,
+    COPY_NONATOMIC  = 0x3u64,
+    RETAIN  = 0x01401u64,
+    COPY  = 0x01403u64
   end
   fun objc_getAssociatedObject (UInt8*, UInt8*) : UInt8*;
   fun objc_setAssociatedObject (UInt8*, UInt8*, UInt8*, AssociationPolicy) : Void

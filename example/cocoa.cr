@@ -1,30 +1,25 @@
-require "./src/sapphire"
+require "./../src/sapphire"
 
 include Sapphire
 
-NSAutoreleasePool.new
-NSApp.activation_policy = LibAppKit::NSApplicationActivationPolicy::Regular
-appName = "Sapphire Example"
+
+puts NSProcessInfo.process_info.process_name
+
+pool = NSAutoreleasePool.new
+
+app = NSApplication.shared_application
+
+NSRect.new 0,0,0,0
+
+puts sizeof(NSRect)
+puts sizeof(LibCF::Rect)
 
 
-window = NSWindow.new(NSRect.new(0, 0, 700, 700).to_objc, LibAppKit::NSWindowMask::Titled, LibAppKit::NSBackingStoreType::Buffered, false)
-window.cascade_top_left_from_point NSPoint.new(20, 20).to_objc
-window.title = appName
-window.make_key_and_order_front nil
+puts sizeof(NSPoint)
+puts sizeof(LibCF::Point)
 
-$text_field_1 = NSTextField.new(NSRect.new(50, 600, 600, 50).to_objc).to_objc
-$text_field_2 = NSTextField.new(NSRect.new(50, 540, 600, 50).to_objc).to_objc
-$test_button = NSButton.new(NSRect.new(50, 480, 600, 50).to_objc).to_objc
+LibAppKit.ns_run_alert_panel(NSString.new("Testing") as LibCF::CFString,
+          NSString.new("This is a simple test to display NSAlertPanel.") as LibCF::CFString,
+                NSString.new("OK") as LibCF::CFString, nil, nil)
 
-window.content_view << $text_field_1
-window.content_view << $text_field_2
-window.content_view << $test_button
-
-
-ns_log "app launched"
-
-NSApp.activate_ignoring_other_apps = true
-NSApp.run
-
-
-
+pool.release
