@@ -20,7 +20,7 @@ hoop_logo_view.set_image = hoop_logo.to_objc
 window.content_view << hoop_logo_view.to_objc
 
 hello_label = NSTextField.new(NSRect.new(160, 250, 380, 36).to_objc)
-hello_label.value = "Hello, world! My name is Hoop. 😎".to_objc
+hello_label.value = "#{NSHost.current_host.localized_name}. 😎".to_objc
 hello_label_font = NSFont.bold_system_font_of_size = 23.0
 hello_label.set_font = hello_label_font.to_objc
 window.content_view << hello_label.to_objc
