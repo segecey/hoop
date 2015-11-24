@@ -8,5 +8,6 @@ module Hoop
     objc_method "setTitle:", ["NSString"], "void", "title="
     objc_method "makeKeyAndOrderFront:", ["id"], "void", "make_key_and_order_front"
     objc_method "contentView", nil, "NSView", "content_view"
+    objc_method "setBackgroundColor:", ["NSColor"], "void", "set_background_color="
   end
 end

@@ -6,6 +6,8 @@ module Hoop
     objc_method "sizeToFit", nil, "void", "size_to_fit"
     objc_method "setTextColor:", ["NSColor"], "void", "set_text_color="
     objc_method "setFont:", ["NSFont"], "void", "set_font="
+    objc_method "setBackgroundColor:", ["NSColor"], "void", "set_background_color="
+
     def value
       self.string_value
     end

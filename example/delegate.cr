@@ -1,4 +1,4 @@
-require "../src/hoop.cr"
+require "./../src/hoop"
 include Hoop
 
 class MyAppDelegate < NSObject
