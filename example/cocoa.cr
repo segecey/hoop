@@ -4,45 +4,33 @@ include Hoop
 
 NSAutoreleasePool.new
 NSApp.activation_policy = LibAppKit::NSApplicationActivationPolicy::Regular
-appName = "Hoop Example".to_objc
+appName = "Hello, World !".to_objc
 
 window = NSWindow.new(NSRect.new(0, 0, 700, 700).to_objc, LibAppKit::NSWindowMask::Titled, LibAppKit::NSBackingStoreType::Buffered, false)
-window.set_background_color = NSColor.black_color.to_objc
+window.set_background_color = NSColor.white_color.to_objc
 window.cascade_top_left_from_point NSPoint.new(20, 20).to_objc
 window.title = appName
 window.make_key_and_order_front nil
 
-$text_field_1 = NSTextField.new(NSRect.new(50, 600, 600, 50).to_objc).to_objc
-$text_field_2 = NSTextField.new(NSRect.new(50, 540, 600, 50).to_objc).to_objc
-$test_button = NSButton.new(NSRect.new(50, 480, 600, 50).to_objc).to_objc
+hoop_logo = NSImage.init_with_image "logo.png"
 
-$test_view = NSView.new(NSRect.new(50, 550, 300, 300).to_objc)
+hoop_logo_view = NSImageView.new(NSRect.new(200,350, 300, 300).to_objc)
+hoop_logo_view.set_image = hoop_logo.to_objc
 
-$image = NSImage.init_with_image "test.png"
+window.content_view << hoop_logo_view.to_objc
 
-$image_view = NSImageView.new(NSRect.new(50, 50, 50, 50).to_objc)
-$image_view.set_image = $image.to_objc
-
-window.content_view << $image_view.to_objc
-
-
-$text_view = NSTextField.new(NSRect.new(0,100,100,50).to_objc)
-
-$text_view.set_editable = false
-$text_view.set_background_color = NSColor.black_color.to_objc
-$text_view.value = "merhaba"
-$text_view_font = NSFont.font_with_name "HelveticaNeue-Bold", 20
-$text_view.set_font = $text_view_font.to_objc
-$text_view.set_text_color = NSColor.green_color.to_objc
-$test_view << $text_view.to_objc
+hello_label = NSTextField.new(NSRect.new(160, 250, 380, 36).to_objc)
+hello_label.value = "Hello, world! My name is Hoop. 😎".to_objc
+hello_label_font = NSFont.bold_system_font_of_size = 23.0
+hello_label.set_font = hello_label_font.to_objc
+window.content_view << hello_label.to_objc
 
 
-window.content_view << $test_view.to_objc
-
-window.content_view << $text_field_1
-window.content_view << $text_field_2
-window.content_view << $test_button
-
+love_label = NSTextField.new(NSRect.new(200, 160, 300, 70).to_objc)
+love_label.value = "I ❤️ Crystal !".to_objc
+love_label_font = NSFont.bold_system_font_of_size = 50.0
+love_label.set_font = love_label_font.to_objc
+window.content_view << love_label.to_objc
 
 ns_log "app launched"
 
