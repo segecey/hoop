@@ -15,6 +15,16 @@ $text_field_1 = NSTextField.new(NSRect.new(50, 600, 600, 50).to_objc).to_objc
 $text_field_2 = NSTextField.new(NSRect.new(50, 540, 600, 50).to_objc).to_objc
 $test_button = NSButton.new(NSRect.new(50, 480, 600, 50).to_objc).to_objc
 
+$test_view = NSView.new(NSRect.new(50, 550, 300, 300).to_objc)
+
+$text_view = NSTextField.new(NSRect.new(0,100,100,10).to_objc)
+
+$text_view.set_editable = false
+$text_view.value = "merhaba"
+$test_view << $text_view.to_objc
+
+window.content_view << $test_view.to_objc
+
 window.content_view << $text_field_1
 window.content_view << $text_field_2
 window.content_view << $test_button
