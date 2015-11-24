@@ -2,6 +2,11 @@ require "./../src/hoop"
 
 include Hoop
 
+a = NSURL.new "http://google.com"
+r = NSURLRequest.new(a.to_objc)
+NSURLConnection.reqest_with_url r.to_objc
+
+exit
 NSAutoreleasePool.new
 NSApp.activation_policy = LibAppKit::NSApplicationActivationPolicy::Regular
 appName = "Hello, World !".to_objc
