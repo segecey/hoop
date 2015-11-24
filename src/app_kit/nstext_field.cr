@@ -4,7 +4,8 @@ module Hoop
 
     objc_method "setEditable:", ["BOOL"], nil, "set_editable="
     objc_method "sizeToFit", nil, "void", "size_to_fit"
-    
+    objc_method "setTextColor:", ["NSColor"], "void", "set_text_color="
+
     def value
       self.string_value
     end
