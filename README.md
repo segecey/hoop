@@ -1,6 +1,6 @@
 Hoop
 =======
-[![Build Status](https://travis-ci.org/amerobin/hoop.svg)](https://travis-ci.org/amerobin/hoop)  [![Join the chat at https://gitter.im/amerobin/hoop](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/amerobin/hoop?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/hoopcr/hoop.svg)](https://travis-ci.org/hoopcr/hoop)  [![Join the chat at https://gitter.im/amerobin/hoop](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/amerobin/hoop?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
 Cocoa & UIKit for Crystal Lang
