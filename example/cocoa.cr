@@ -1,10 +1,10 @@
-require "./../src/sapphire"
+require "./../src/hoop"
 
-include Sapphire
+include Hoop
 
 NSAutoreleasePool.new
 NSApp.activation_policy = LibAppKit::NSApplicationActivationPolicy::Regular
-appName = "Sapphire Example".to_objc
+appName = "Hoop Example".to_objc
 
 window = NSWindow.new(NSRect.new(0, 0, 700, 700).to_objc, LibAppKit::NSWindowMask::Titled, LibAppKit::NSBackingStoreType::Buffered, false)
 window.cascade_top_left_from_point NSPoint.new(20, 20).to_objc

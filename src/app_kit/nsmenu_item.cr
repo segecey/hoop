@@ -1,4 +1,4 @@
-module Sapphire
+module Hoop
   class NSMenuItem < NSObject
     import_class
 

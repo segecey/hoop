@@ -1,4 +1,4 @@
-module Sapphire
+module Hoop
   class NSString < NSObject
     import_class
 
@@ -9,7 +9,7 @@ module Sapphire
     end
 
     def to_s(io)
-      io << String.new(Sapphire.send_msg(to_objc, "UTF8String"))
+      io << String.new(Hoop.send_msg(to_objc, "UTF8String"))
     end
 
     def to_nsstring

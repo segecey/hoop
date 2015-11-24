@@ -1,4 +1,4 @@
-module Sapphire
+module Hoop
   class NSProcessInfo < NSObject
     import_class
 

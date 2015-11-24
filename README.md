@@ -1,18 +1,18 @@
-Sapphire
+Hoop
 =======
-[![Build Status](https://travis-ci.org/amerobin/sapphire.svg)](https://travis-ci.org/amerobin/sapphire)  [![Join the chat at https://gitter.im/amerobin/sapphire](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/amerobin/sapphire?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/amerobin/hoop.svg)](https://travis-ci.org/amerobin/hoop)  [![Join the chat at https://gitter.im/amerobin/hoop](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/amerobin/hoop?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
 Cocoa & UIKit for Crystal Lang
 
 ```crystal
-require "./src/sapphire"
+require "./src/hoop"
 
-include Sapphire
+include Hoop
 
 NSAutoreleasePool.new
 NSApp.activation_policy = LibAppKit::NSApplicationActivationPolicy::Regular
-appName = "Sapphire Example"
+appName = "Hoop Example"
 
 
 window = NSWindow.new(NSRect.new(0, 0, 700, 700).to_objc, LibAppKit::NSWindowMask::Titled, LibAppKit::NSBackingStoreType::Buffered, false)
@@ -39,12 +39,12 @@ NSApp.run
 ```
 
 ## Screenshot
-# ![Screenshot](https://raw.githubusercontent.com/0x73/sapphire/master/assets/example_app.png)
+# ![Screenshot](https://raw.githubusercontent.com/hoopcr/hoop/master/assets/example_app.png)
 
 Contributing
 ============
 
-1. Fork it ( https://github.com/0x73/sapphire/fork )
+1. Fork it ( https://github.com/hoopcr/hoop/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)

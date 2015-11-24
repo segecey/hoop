@@ -1,6 +1,6 @@
 require "./lib_objc.cr"
 
-module Sapphire
+module Hoop
   class Selector
     def initialize(name : String)
       @sel = LibObjC.sel_registerName(name)
@@ -30,7 +30,7 @@ end
 
 class String
   def to_sel
-    Sapphire::Selector.new(self)
+    Hoop::Selector.new(self)
   end
 end
 

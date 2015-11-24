@@ -1,4 +1,4 @@
 require "spec"
-require "./../src/sapphire"
+require "./../src/hoop"
 
-include Sapphire
+include Hoop

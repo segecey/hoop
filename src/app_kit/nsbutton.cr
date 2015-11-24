@@ -1,6 +1,6 @@
 require "./NSControl"
 
-module Sapphire
+module Hoop
   class NSButton < NSControl
     import_class
 

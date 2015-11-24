@@ -1,4 +1,4 @@
-module Sapphire
+module Hoop
   class NSMethod
     def initialize(@method : LibObjC::Method)
     end

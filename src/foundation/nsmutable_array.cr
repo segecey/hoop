@@ -1,6 +1,6 @@
 require "./nsobject"
 
-module Sapphire
+module Hoop
   class NSMutableArray < NSObject
     import_class
 
@@ -13,7 +13,7 @@ module Sapphire
 end
 
 
-module Sapphire
+module Hoop
 	class NSMutableDictionary < NSObject
 		import_class
 		

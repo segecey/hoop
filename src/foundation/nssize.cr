@@ -1,4 +1,4 @@
-module Sapphire
+module Hoop
   struct NSSize
     def initialize(width, height)
       @obj = LibCF::Size.new

@@ -1,4 +1,4 @@
-module Sapphire
+module Hoop
   class NSMenu < NSObject
     import_class
     objc_method "initWithTitle:", ["NSString"], "id", "initialize"

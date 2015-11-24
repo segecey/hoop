@@ -1,6 +1,6 @@
 require "./NSView"
 
-module Sapphire
+module Hoop
   abstract class NSControl < NSView
     import_class
 

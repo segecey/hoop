@@ -1,4 +1,4 @@
-module Sapphire
+module Hoop
   class NSNib < NSObject
     import_class
 

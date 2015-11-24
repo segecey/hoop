@@ -1,6 +1,6 @@
 require "./nsobject"
 
-module Sapphire
+module Hoop
   class NSAutoreleasePool < NSObject
     import_class
 

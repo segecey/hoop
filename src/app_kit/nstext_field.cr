@@ -1,4 +1,4 @@
-module Sapphire
+module Hoop
   class NSTextField < NSControl
     import_class
 

@@ -1,4 +1,4 @@
-module Sapphire
+module Hoop
   struct NSPoint
     def initialize(x, y)
       @obj = LibCF::Point.new

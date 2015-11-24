@@ -1,4 +1,4 @@
-module Sapphire
+module Hoop
   struct NSRect
     def initialize(x, y, w, h)
       @origin = NSPoint.new(x, y)

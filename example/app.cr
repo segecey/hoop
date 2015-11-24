@@ -1,5 +1,5 @@
-require "../src/sapphire.cr"
-include Sapphire
+require "../src/hoop.cr"
+include Hoop
 
 class MyAppDelegate < NSObject
 	export_class

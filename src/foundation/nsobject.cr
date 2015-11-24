@@ -1,4 +1,4 @@
-module Sapphire
+module Hoop
   abstract class NSObject
     macro objc_class
       def initialize(s : UInt8*)
@@ -32,10 +32,10 @@ module Sapphire
     macro objc_method_helper(receiver, method_name, args = nil, returnType = nil, crystal_method = nil)
       {{ "##{crystal_method ||= method_name}".id }}
       {{ "##{args ||= [] of Symbol}".id }}
-      def {{crystal_method.id}}({% for i in 0 ... args.size %}{% if i > 0 %} , {% end %} {{"arg#{i}".id}} {%if args[i] != :id && args[i] != :NSUInteger %}{% if args[i] == :BOOL %}: Bool{% end %}{% if args[i] == :NSString %}: String|NSString {% end %}{% if args[i] == :SEL %}: Selector|String? {% end %}{% if args[i] == :const_char_ptr %}: String {% end %}{% end %}{% end %})
+      def {{crystal_method.id}}({% for i in 0 ... args.length %}{% if i > 0 %} , {% end %} {{"arg#{i}".id}} {%if args[i] != :id && args[i] != :NSUInteger %}{% if args[i] == :BOOL %}: Bool{% end %}{% if args[i] == :NSString %}: String|NSString {% end %}{% if args[i] == :SEL %}: Selector|String? {% end %}{% if args[i] == :const_char_ptr %}: String {% end %}{% end %}{% end %})
 
-        res = Sapphire.send_msg({{receiver}}, {{method_name}}
-          {% for i in 0 ... args.size %}
+        res = Hoop.send_msg({{receiver}}, {{method_name}}
+          {% for i in 0 ... args.length %}
             , objc_method_arg({{"arg#{i}".id}}, {{args[i]}})
           {% end %}
         )
@@ -86,7 +86,7 @@ module Sapphire
           {% if objc_class_name %}
             {{objc_class_name}}
           {% else %}
-            self.to_s["Sapphire::".size..-1]
+            self.to_s["Hoop::".size..-1]
           {% end %}
         end
         NSClass.new(class_name)
@@ -105,7 +105,7 @@ module Sapphire
 
 
       def initialize
-        initialize(Sapphire.send_msg(nsclass.send_msg("alloc"), "init"))
+        initialize(Hoop.send_msg(nsclass.send_msg("alloc"), "init"))
         LibObjC.objc_setAssociatedObject(to_objc, $x_{{@type.name.id}}_assoc_key, Pointer(UInt8).new(self.object_id), LibObjC::AssociationPolicy::ASSIGN)
       end
     end

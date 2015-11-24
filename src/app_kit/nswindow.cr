@@ -1,4 +1,4 @@
-module Sapphire
+module Hoop
   class NSWindow < NSResponder
     import_class
 

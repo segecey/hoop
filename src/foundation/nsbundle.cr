@@ -1,4 +1,4 @@
-module Sapphire
+module Hoop
   class NSBundle < NSObject
     import_class
 

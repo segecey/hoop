@@ -78,7 +78,7 @@ struct Tuple
 end
 
 
-module Sapphire
+module Hoop
   def self.send_msg(objc_target, selector_name, *args)
     objc_target.not_nil!
     LibObjC.objc_msgSend(objc_target, selector_name.to_sel.to_objc, *args)

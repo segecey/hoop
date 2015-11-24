@@ -1,6 +1,6 @@
 require "./NSResponder"
 
-module Sapphire
+module Hoop
   class NSView < NSResponder
     import_class
 
