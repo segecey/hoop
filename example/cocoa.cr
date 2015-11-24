@@ -21,8 +21,11 @@ $text_view = NSTextField.new(NSRect.new(0,100,100,50).to_objc)
 
 $text_view.set_editable = false
 $text_view.value = "merhaba"
-$text_view.set_text_color = NSColor.red_color.to_objc
+$text_view_font = NSFont.font_with_name "HelveticaNeue-Bold", 20
+$text_view.set_font = $text_view_font.to_objc
+$text_view.set_text_color = NSColor.green_color.to_objc
 $test_view << $text_view.to_objc
+
 
 window.content_view << $test_view.to_objc
 
