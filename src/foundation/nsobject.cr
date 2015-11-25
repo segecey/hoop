@@ -114,17 +114,17 @@ module Hoop
     macro export(method_name, selector = nil, types_encoding = nil)
       {{ "##{selector ||= method_name}".id }}
       {{ "##{types_encoding ||= "v@:"}".id }}
-      $x_{{@type.name.id}}_{{method_name.id}}_imp = ->(obj : UInt8*, _cmd : LibObjC::SEL {%for t,i in types_encoding[3..-1].chars%}{{", a#{i} : UInt8*".id}}{%end%}) {
-        ptr = LibObjC.objc_getAssociatedObject(obj, $x_{{@type.name.id}}_assoc_key)
+      $x_{{@class_name.id}}_{{method_name.id}}_imp = ->(obj : UInt8*, _cmd : LibObjC::SEL {%for t,i in types_encoding[3..-1].chars%}{{", a#{i} : UInt8*".id}}{%end%}) {
+        ptr = LibObjC.objc_getAssociatedObject(obj, $x_{{@class_name.id}}_assoc_key)
         if ptr.nil?
-          crystal_obj = {{@type.name.id}}.new(obj)
-          LibObjC.objc_setAssociatedObject(obj, $x_{{@type.name.id}}_assoc_key, Pointer(UInt8).new(crystal_obj.object_id), LibObjC::AssociationPolicy::ASSIGN)
+          crystal_obj = {{@class_name.id}}.new(obj)
+          LibObjC.objc_setAssociatedObject(obj, $x_{{@class_name.id}}_assoc_key, Pointer(UInt8).new(crystal_obj.object_id), LibObjC::AssociationPolicy::ASSIGN)
         else
-          crystal_obj = ptr as {{@type.name.id}}
+          crystal_obj = ptr as {{@class_name.id}}
         end
         crystal_obj.{{method_name.id}}({%for t,i in types_encoding[3..-1].chars%}{%if i > 0%}{{",".id}}{%end%}{{"a#{i}".id}}{%end%})
       }
-      LibObjC.class_addMethod($_{{@type.name.id}}_classPair, {{selector.stringify}}.to_sel.to_objc, $x_{{@type.name.id}}_{{method_name.id}}_imp.pointer as LibObjC::IMP, {{types_encoding}})
+      LibObjC.class_addMethod($_{{@class_name.id}}_classPair, {{selector.stringify}}.to_sel.to_objc, $x_{{@class_name.id}}_{{method_name.id}}_imp.pointer as LibObjC::IMP, {{types_encoding}})
     end
 
     macro objc(code)
