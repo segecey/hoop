@@ -74,7 +74,7 @@ class LoginHandler < NSObject
     alert  = NSAlert.new
     alert.add_button_with_title = alert_button_title
     alert.set_message_text = alert_message
-    #alert.run_modal
+    alert.run_modal
 
   end
   export "login_action", "loginAction:", "v@:@"
