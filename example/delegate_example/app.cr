@@ -21,16 +21,26 @@ class MyView < NSView
 	export "example_button_action", "exampleButtonAction"
 end
 
+class SecondViewController < NSViewController
+  export_class
+  def view_did_load
+    Hoop.send_msg(LibObjC.class_getSuperclass(LibObjC.objc_getClass(self.to_objc)) as Pointer(UInt8), "viewDidLoad", nil)
+    ns_log "second view controller"
+  end
+
+
+  export "view_did_load", "viewDidLoad"
+end
+
 
 class ViewController < NSViewController
 	export_class
-  LibObjC.class_addProtocol(ViewController.nsclass.obj, LibObjC.objc_getProtocol("NSURLConnectionDelegate"))
 	@@username_text_field
 	@@password_text_field
 
 	def view_did_load
+    Hoop.send_msg(LibObjC.class_getSuperclass(LibObjC.objc_getClass(self.to_objc)) as Pointer(UInt8), "viewDidLoad", nil)
 		view = self.view as NSView
-
     @@username_text_field = view.view_with_tag = 1
 		@@username_text_field = @@username_text_field as NSTextField
 
@@ -41,6 +51,7 @@ class ViewController < NSViewController
 		sad = sad as NSButton
 		sad.target = self.to_objc
 		sad.action = "exampleButtonAction".to_sel.to_objc
+
 	end
 
 	def example_button_action
@@ -50,7 +61,8 @@ class ViewController < NSViewController
     username = "#{username_text_field.value}"
     password = "#{password_text_field.value}"
 
-    self.perform_segue_with_identifier "test", nil
+    self.perform_segue_with_identifier "testIden", nil
+
     ns_log "#{$login_url}?username=#{username}&password=#{password}"
     url = NSURL.url_with_string "#{$login_url}?username=#{username}&password=#{password}"
     req = NSMutableURLRequest.new url.to_objc, LibAppKit::NSURLRequestCachePolicy::NSURLRequestUseProtocolCachePolicy, 60.0

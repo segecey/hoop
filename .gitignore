@@ -2,3 +2,4 @@
 .crystal
 *.app
 *.nib
+*.log

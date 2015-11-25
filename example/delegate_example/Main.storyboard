@@ -723,26 +723,26 @@
                         <animations/>
                     </view>
                     <connections>
-                        <segue destination="H2e-X7-uTg" kind="modal" id="o22-n6-HFK"/>
+                        <segue destination="Lt5-VS-nyH" kind="show" identifier="testIden" id="Zlc-n4-hI4"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="166" y="657"/>
+            <point key="canvasLocation" x="101" y="617"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="kbE-GQ-jrJ">
+        <!--Second View Controller-->
+        <scene sceneID="iNw-pa-Fsp">
             <objects>
-                <viewController id="H2e-X7-uTg" customClass="ViewController" sceneMemberID="viewController">
-                    <view key="view" id="7Jp-lM-b7u" customClass="ViewController">
+                <viewController id="Lt5-VS-nyH" customClass="SecondViewController" sceneMemberID="viewController">
+                    <view key="view" id="RR6-qm-X1I">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                     </view>
                 </viewController>
-                <customObject id="seN-fU-Zmp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="EYa-0S-TOd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="794" y="539"/>
+            <point key="canvasLocation" x="611" y="632"/>
         </scene>
     </scenes>
 </document>
