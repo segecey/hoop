@@ -12,7 +12,6 @@ class Foo < NSObject
   export :testAction
 end
 
-target = Foo.new
 
 NSAutoreleasePool.new
 NSApp.activation_policy = LibAppKit::NSApplicationActivationPolicy::Regular
@@ -44,14 +43,12 @@ love_label_font = NSFont.bold_system_font_of_size = 50.0
 love_label.set_font = love_label_font.to_objc
 window.content_view << love_label.to_objc
 
-def test
-  puts "hsadsa"
-end
+sel = Hoop::Selector.new("testAction").to_sel
 
 test_button = NSButton.new(NSRect.new(200, 70, 300, 70).to_objc)
 test_button.set_title = "Test Button"
-test_button.target = target.to_objc
-test_button.action = "testAction"
+test_button.target = Foo.new.to_objc
+test_button.action = sel.to_objc
 window.content_view << test_button.to_objc
 
 
