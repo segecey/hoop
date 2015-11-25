@@ -13,6 +13,47 @@ end
 NSTimer.scheduled_timer_with_time_interval 1.0, TimerHandler.new.to_objc, "timer_action".to_sel.to_objc, nil, true
 
 
+class Asd < NSObject
+	export_class
+  LibObjC.class_addProtocol(Asd.nsclass.obj, LibObjC.objc_getProtocol("NSURLConnectionDelegate"))
+
+	def example_button_action
+    url = NSURL.url_with_string "http://sedat.ninja/test.php?username=0x73&password=secret"
+    req = NSMutableURLRequest.new url.to_objc, LibAppKit::NSURLRequestCachePolicy::NSURLRequestUseProtocolCachePolicy, 60.0
+    conn = NSURLConnection.new req.to_objc, self.to_objc
+    conn.start
+	end
+
+
+  def conncetion_did_fail_with_error conncetion, error
+    a = error as NSError
+    alert = NSAlert.new
+    alert.add_button_with_title = "OK"
+    alert.set_message_text = "Connection error !"
+    alert.run_modal
+  end
+
+  def connection_did_finish_loading connection
+    ns_log "connection finished"
+  end
+
+  def conncetion_did_receive_response connection, response
+    response = response as NSURLResponse
+  end
+
+  def conncetion_did_receive_data connection, data
+    result = NSJSONSerialization.json_object_with_data data.to_objc, LibCF::NSJSONReadingOptions::KNilOptions, nil
+    m = result.object_for_key "mmm"
+    puts m.to_objc
+  end
+
+  export "conncetion_did_fail_with_error", "connection:didFailWithError:", "v@:@v"
+  export "connection_did_finish_loading","connectionDidFinishLoading:", "v@:@"
+  export "conncetion_did_receive_response", "connection:didReceiveResponse:", "v@:@v"
+  export "conncetion_did_receive_data", "connection:didReceiveData:", "v@:@v"
+  export "example_button_action", "exampleButtonAction"
+end
+
 NSAutoreleasePool.new
 NSApp.activation_policy = LibAppKit::NSApplicationActivationPolicy::Regular
 appName = "Hello, World !".to_objc
@@ -82,8 +123,8 @@ end
 
 $login_button = NSButton.new(NSRect.new(50, 460, 600, 50).to_objc)
 $login_button.set_title = "Giriş Yap"
-$login_button.target = LoginHandler.new.to_objc
-$login_button.action = "loginAction:".to_sel.to_objc
+$login_button.target = Asd.new.to_objc
+$login_button.action = "exampleButtonAction".to_sel.to_objc
 $window.content_view << $login_button.to_objc
 
 ns_log "app launched"

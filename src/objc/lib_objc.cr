@@ -5,7 +5,7 @@ lib LibObjC
   alias IMP = Void*
   alias IMPAlloc = Pointer(UInt8), LibObjC::SEL -> UInt8*
   alias IMPAllocWithZone = Pointer(UInt8), LibObjC::SEL, Pointer(UInt8) -> UInt8*
-
+  type NSInteger = UInt64*
 
   type Protocol = Void*
 

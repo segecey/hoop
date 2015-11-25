@@ -18,5 +18,7 @@ module Hoop
 
     objc_method "length", nil, "NSUInteger"
     objc_method "characterAtIndex:", ["NSUInteger"], "unichar", "[]"
+    #NSStringEncoding
+    objc_method "dataUsingEncoding:", ["NSStringEncoding"], "NSData", "data_using_encoding"
   end
 end

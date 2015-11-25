@@ -65,6 +65,10 @@ class String
     NSString.new(self).to_objc
   end
 
+  def to_objc_string
+    NSString.new(self)
+  end
+
   def to_objc
     self
   end

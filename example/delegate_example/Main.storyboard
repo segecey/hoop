@@ -722,10 +722,27 @@
                         </subviews>
                         <animations/>
                     </view>
+                    <connections>
+                        <segue destination="H2e-X7-uTg" kind="modal" id="o22-n6-HFK"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="166" y="657"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="kbE-GQ-jrJ">
+            <objects>
+                <viewController id="H2e-X7-uTg" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" id="7Jp-lM-b7u" customClass="ViewController">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </view>
+                </viewController>
+                <customObject id="seN-fU-Zmp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="794" y="539"/>
         </scene>
     </scenes>
 </document>
