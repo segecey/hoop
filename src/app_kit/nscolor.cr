@@ -8,5 +8,6 @@ module Hoop
     objc_static_method "greenColor", nil, "NSColor", "green_color"
     objc_static_method "whiteColor", nil, "NSColor", "white_color"
     objc_method "set", nil, "void", "set"
+    objc_method "setFill", nil, "void", "set_fill"
   end
 end

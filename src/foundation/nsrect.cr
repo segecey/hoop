@@ -9,6 +9,9 @@ module Hoop
       @obj.size = @size.to_objc
     end
 
+    def teste
+    end
+
     def to_objc
       @obj
     end

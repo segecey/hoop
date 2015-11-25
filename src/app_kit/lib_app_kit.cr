@@ -83,5 +83,7 @@ lib LibAppKit
 
   fun ns_application_main = NSApplicationMain(UInt32, UInt8**) : UInt32
 
+  fun ns_rect_fill = NSRectFill(LibCF::Rect)
+
   fun force : Void
 end

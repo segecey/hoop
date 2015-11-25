@@ -737,6 +737,13 @@
                     <view key="view" id="RR6-qm-X1I">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" tag="222" translatesAutoresizingMaskIntoConstraints="NO" id="Utz-ne-jto">
+                                <rect key="frame" x="128" y="53" width="194" height="194"/>
+                                <animations/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logo.png" id="cAq-Ca-wE1"/>
+                            </imageView>
+                        </subviews>
                         <animations/>
                     </view>
                 </viewController>
@@ -745,4 +752,7 @@
             <point key="canvasLocation" x="611" y="632"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo.png" width="128" height="128"/>
+    </resources>
 </document>

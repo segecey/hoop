@@ -1,5 +1,5 @@
 require "./../src/hoop"
 include Hoop
 
-a = "sadsa".to_nsstring
-puts NSString.new("sa").data_using_encoding
+a = NSRect.new 50, 50, 50, 50
+puts a.to_objc
