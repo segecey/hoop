@@ -95,7 +95,8 @@ module Hoop
 
     macro export_class(objc_class_name = nil)
       objc_class
-      $_{{@type.name.id}}_classPair = LibObjC.objc_allocateClassPair({{@type.superclass}}.nsclass.obj, {{@type.name.id}}.nsclass as Pointer(UInt8), 0_u32)
+      #$_{{@type.name.id}}_classPair = LibObjC.objc_allocateClassPair({{@type.superclass}}.nsclass.obj, {{@type.name.id}}.nsclass as Pointer(UInt8), 0_u32)
+      $_{{@class_name.id}}_classPair = LibObjC.objc_allocateClassPair({{@superclass}}.nsclass.obj, {{@class_name}}, 0_u32)
       LibObjC.objc_registerClassPair($_{{@type.name.id}}_classPair)
       $x_{{@type.name.id}}_assoc_key = "crystal_obj"
 
