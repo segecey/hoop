@@ -24,18 +24,19 @@ window.content_view << $password_text_field.to_objc
 
 class NotificationHandler < NSObject
   export_class
-  def notification_receive
+  def notification_receive notification
     ns_log "notification received"
     alert  = NSAlert.new
     alert.add_button_with_title = "Hello from NotificationCenter"
     alert.set_message_text = "Notification Center !!1"
     alert.run_modal
   end
-  export "notification_receive"
+
+  export "notification_receive", "notificationReceive:", "v@:@"
 end
 
 
-NSNotificationCenter.default_center.add_observer NotificationHandler.new.to_objc, "notification_receive".to_sel.to_objc, "hoop_test", nil
+NSNotificationCenter.default_center.add_observer NotificationHandler.new.to_objc, "notificationReceive:".to_sel.to_objc, "hoop_test", nil
 
 class LoginHandler < NSObject
   export_class
@@ -61,7 +62,7 @@ class LoginHandler < NSObject
     alert.set_message_text = alert_message
     alert.run_modal
 
-    NSNotificationCenter.default_center.post_notification "hoop_test", nil
+    NSNotificationCenter.default_center.post_notification_with_user_info "hoop_test", nil, nil
 
   end
   export "login_action"
