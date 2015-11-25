@@ -124,7 +124,7 @@ module Hoop
         end
         crystal_obj.{{method_name.id}}({%for t,i in types_encoding[3..-1].chars%}{%if i > 0%}{{",".id}}{%end%}{{"a#{i}".id}}{%end%})
       }
-      LibObjC.class_addMethod($_{{@class_name.id}}_classPair, {{selector.stringify}}.to_sel.to_objc, $x_{{@class_name.id}}_{{method_name.id}}_imp.pointer as LibObjC::IMP, {{types_encoding}})
+      LibObjC.class_addMethod($_{{@class_name.id}}_classPair, {{selector}}.to_sel.to_objc, $x_{{@class_name.id}}_{{method_name.id}}_imp.pointer as LibObjC::IMP, {{types_encoding}})
     end
 
     macro objc(code)

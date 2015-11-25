@@ -9,7 +9,7 @@ class Foo < NSObject
     puts "hiii"
   end
 
-  export :testAction
+  export "testAction"
 end
 
 
@@ -43,12 +43,12 @@ love_label_font = NSFont.bold_system_font_of_size = 50.0
 love_label.set_font = love_label_font.to_objc
 window.content_view << love_label.to_objc
 
-sel = Hoop::Selector.new("testAction").to_sel
+sel = Hoop::Selector.new("testAction").to_sel.to_objc
 
 test_button = NSButton.new(NSRect.new(200, 70, 300, 70).to_objc)
 test_button.set_title = "Test Button"
 test_button.target = Foo.new.to_objc
-test_button.action = sel.to_objc
+test_button.action = sel
 window.content_view << test_button.to_objc
 
 
