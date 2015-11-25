@@ -10,6 +10,11 @@ lib LibAppKit
     end
   end
 
+  enum NSProgressIndicatorStyle : NSEnum
+    NSProgressIndicatorBarStyle = 0,
+    NSProgressIndicatorSpinningStyle = 1
+  end
+
   enum NSWindowMask : NSEnum
     Borderless = 0,
     Titled = 1 << 0,
