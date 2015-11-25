@@ -12,7 +12,7 @@ module Hoop
       {% elsif type == "BOOL" %}
         {{value.id}}
       {% elsif type == "SEL" %}
-        {{value.id}}.to_sel
+        {{value.id}}
       {% elsif type == "NSString" %}
         {{value.id}}.to_nsstring
       {% elsif type == "const_char_ptr" %}

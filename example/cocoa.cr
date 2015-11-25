@@ -2,6 +2,18 @@ require "./../src/hoop"
 
 include Hoop
 
+
+class Foo < NSObject
+  export_class
+  def testAction
+    puts "hiii"
+  end
+
+  export :testAction
+end
+
+target = Foo.new
+
 NSAutoreleasePool.new
 NSApp.activation_policy = LibAppKit::NSApplicationActivationPolicy::Regular
 appName = "Hello, World !".to_objc
@@ -31,6 +43,17 @@ love_label.value = "I ❤️ Crystal !".to_objc
 love_label_font = NSFont.bold_system_font_of_size = 50.0
 love_label.set_font = love_label_font.to_objc
 window.content_view << love_label.to_objc
+
+def test
+  puts "hsadsa"
+end
+
+test_button = NSButton.new(NSRect.new(200, 70, 300, 70).to_objc)
+test_button.set_title = "Test Button"
+test_button.target = target.to_objc
+test_button.action = "testAction"
+window.content_view << test_button.to_objc
+
 
 ns_log "app launched"
 
