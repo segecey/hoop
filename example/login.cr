@@ -86,9 +86,6 @@ $login_button.target = LoginHandler.new.to_objc
 $login_button.action = "loginAction:".to_sel.to_objc
 $window.content_view << $login_button.to_objc
 
-
-
-
 ns_log "app launched"
 
 NSApp.activate_ignoring_other_apps = true

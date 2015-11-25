@@ -5,7 +5,8 @@ module Hoop
     import_class
 
     objc_method "initWithFrame:", ["NSRect"], "id", "initialize"
+    objc_method "initWithCoder:", ["NSCoder"], "id", "initialize"
     objc_method "addSubview:", ["NSView"], "void", "<<"
-    
+
   end
 end
