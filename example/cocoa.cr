@@ -2,21 +2,6 @@ require "./../src/hoop"
 
 include Hoop
 
-class UrlConnectionDelegate < NSObject
-  export_class
-  LibObjC.class_addProtocol(UrlConnectionDelegate.nsclass.obj, LibObjC.objc_getProtocol("NSApplicationDelegate"))
-  def connection_did_receive_data(connection, data)
-    puts "in here"
-  end
-  export connection_did_receive_data, "connection:didReceiveData:", "v@:v@"
-end
-d = UrlConnectionDelegate.new
-
-
-a = NSURL.url_with_string "http://google.com"
-r = NSURLRequest.request_with_url a.to_objc
-c = NSURLConnection.new r.to_objc, d.to_objc
-
 NSAutoreleasePool.new
 NSApp.activation_policy = LibAppKit::NSApplicationActivationPolicy::Regular
 appName = "Hello, World !".to_objc

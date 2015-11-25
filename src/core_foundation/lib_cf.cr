@@ -20,6 +20,10 @@ lib LibCF
     size : Size
   end
 
+  enum NSJSONReadingOptions
+    KNilOptions = 0
+  end
+
   #fun nslog = NSLog(UInt32*, ...)
   fun nslog = NSLog(...)
 
