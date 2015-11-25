@@ -3,9 +3,6 @@ require "./../src/hoop"
 include Hoop
 
 
-
-
-
 NSAutoreleasePool.new
 NSApp.activation_policy = LibAppKit::NSApplicationActivationPolicy::Regular
 appName = "Hello, World !".to_objc
@@ -25,6 +22,19 @@ $password_text_field = NSTextField.new(NSRect.new(50, 530, 600, 50).to_objc)
 $password_text_field.set_font = (NSFont.bold_system_font_of_size = 30.0).to_objc
 window.content_view << $password_text_field.to_objc
 
+class NotificationHandler < NSObject
+  export_class
+  def notification_receive sad
+    ns_log "notification received"
+  end
+  export "notification_receive", "notificationReceive:", "v@:@"
+end
+
+
+NSNotificationCenter.default_center.add_observer NotificationHandler.new.to_objc, "notification_receive".to_sel.to_objc, "HoopTestNotification", "HoopTestNotification"
+NSNotificationCenter.default_center.post_notification "HoopTestNotification", nil
+
+
 class LoginHandler < NSObject
   export_class
   @@default_username = "sdev"
@@ -43,7 +53,7 @@ class LoginHandler < NSObject
     end
     ns_log "#{@@default_username}/#{@@default_password}"
     ns_log "#{password}/#{username}"
-    
+
     alert  = NSAlert.new
     alert.add_button_with_title = alert_button_title
     alert.set_message_text = alert_message
