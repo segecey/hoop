@@ -3,6 +3,8 @@
 lib LibCF
   type CFString = Void*
 
+  type NSTimeInterval = Float64
+
   fun str = __CFStringMakeConstantString(UInt8*) : CFString
 
   struct Point

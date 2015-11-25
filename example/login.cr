@@ -2,6 +2,16 @@ require "./../src/hoop"
 
 include Hoop
 
+class TimerHandler < NSObject
+  export_class
+  def timer_action
+    puts "timer action called"
+  end
+  export "timer_action"
+end
+
+NSTimer.scheduled_timer_with_time_interval 1.0, TimerHandler.new.to_objc, "timer_action".to_sel.to_objc, nil, true
+
 
 NSAutoreleasePool.new
 NSApp.activation_policy = LibAppKit::NSApplicationActivationPolicy::Regular
@@ -29,6 +39,8 @@ class NotificationHandler < NSObject
     progress_indicator = NSProgressIndicator.new(NSRect.new(50, 50, 600, 50).to_objc)
     progress_indicator.start_animation nil
     progress_indicator.set_style = LibAppKit::NSProgressIndicatorStyle::NSProgressIndicatorBarStyle
+    progress_indicator.remove_from_superview
+
     $window.content_view << progress_indicator.to_objc
   end
 
