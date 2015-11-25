@@ -6,7 +6,10 @@ include Hoop
 class Foo < NSObject
   export_class
   def testAction
-    puts "hiii"
+    alert = NSAlert.new
+    alert.add_button_with_title = "Excellent"
+    alert.set_message_text = "Hello, world from Hoop 😎"
+    alert.run_modal
   end
 
   export "testAction"
