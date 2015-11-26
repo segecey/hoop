@@ -7,9 +7,8 @@ hoop
 
 ```shell
 git clone git@github.com:hoopcr/hoop.git
-cd hoop
-make deps
-make install
+shards install
+crystal run example/login.cr
 ```
 
 ### Basic example
@@ -81,7 +80,7 @@ NSApp.run
 ```
 
 ```shell
-$ hoop app.cr
+$ crystal app.cr
 ```
 
 ## Screenshot
