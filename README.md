@@ -63,5 +63,11 @@ Contributing
 4. Push to the branch (git push origin my-new-feature)
 5. Create a new Pull Request
 
+# Authors
+
+- Sedat G. Çiftçi [@0x73](https://github.com/0x73)
+- Serdar Doğruyol [@sdogruyol](https://github.com/sdogruyol)
+
 ## Thanks
+
 Thanks to Manas for their awesome work on [Crocoa](https://github.com/manastech/crocoa).
