@@ -4,7 +4,7 @@ class ViewController < NSViewController
 	@@password_text_field
 
 	def view_did_load
-
+		self.super_view_did_load
 		view = self.view as NSView
     @@username_text_field = view.view_with_tag = 1
 		@@username_text_field = @@username_text_field as NSTextField
