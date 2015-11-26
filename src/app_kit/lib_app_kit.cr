@@ -35,11 +35,11 @@ lib LibAppKit
     NSISO2022JPStringEncoding = 21,
     NSMacOSRomanStringEncoding = 30,
     NSUTF16StringEncoding = NSUnicodeStringEncoding,
-    NSUTF16BigEndianStringEncoding = 0x90000100,
-    NSUTF16LittleEndianStringEncoding = 0x94000100,
-    NSUTF32StringEncoding = 0x8c000100,
-    NSUTF32BigEndianStringEncoding = 0x98000100,
-    NSUTF32LittleEndianStringEncoding = 0x9c000100
+    NSUTF16BigEndianStringEncoding = 90000100,
+    NSUTF16LittleEndianStringEncoding = 94000100,
+    NSUTF32StringEncoding = 8c000100,
+    NSUTF32BigEndianStringEncoding = 98000100,
+    NSUTF32LittleEndianStringEncoding = 9c000100
   end
   enum NSURLRequestCachePolicy
     NSURLRequestUseProtocolCachePolicy = 0,
