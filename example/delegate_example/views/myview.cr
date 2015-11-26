@@ -1,6 +1,7 @@
 class MyView < NSView
   export_class
-  def draw_rect rect
+
+  def draw_rect(rect)
     ns_log "draw rect"
   end
 

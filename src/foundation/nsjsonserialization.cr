@@ -1,4 +1,5 @@
 require "./nsobject"
+
 module Hoop
   class NSJSONSerialization < NSObject
     import_class

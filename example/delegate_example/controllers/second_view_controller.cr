@@ -1,5 +1,6 @@
 class SecondViewController < NSViewController
   export_class
+
   def view_did_load
     self.super_view_did_load
     view = self.view as NSView

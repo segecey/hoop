@@ -1,4 +1,3 @@
-
 class Object
   abstract def to_objc
 end
@@ -77,10 +76,8 @@ end
 # TODO
 struct Tuple
   def map_to_objc
-
   end
 end
-
 
 module Hoop
   def self.send_msg(objc_target, selector_name, *args)

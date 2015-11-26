@@ -1,4 +1,5 @@
 require "./../app_kit/nsview"
+
 module Hoop
   class NSProgressIndicator < NSView
     import_class
