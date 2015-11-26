@@ -7,7 +7,7 @@ module Hoop
     objc_method "setTextColor:", ["NSColor"], "void", "set_text_color="
     objc_method "setFont:", ["NSFont"], "void", "set_font="
     objc_method "setBackgroundColor:", ["NSColor"], "void", "set_background_color="
-
+    objc_method "setHidden:", ["BOOL"], "void", "set_hidden"
     def value
       self.string_value
     end

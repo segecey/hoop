@@ -1,4 +1,3 @@
-
 class Object
   abstract def to_objc
 end

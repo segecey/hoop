@@ -98,65 +98,65 @@ module Hoop
     end
 
     macro objc_method_helper_body(receiver, method_name, args = nil, returnType = nil, crystal_method = nil)
-  # TODO auto method tidy up.
-  # ???? new lines breaks
-  # ???? unable to extract type restriction on its own macro
-  {{ "##{crystal_method ||= method_name}".id }}
-  {{ "##{args ||= [] of Symbol}".id }}
+      # TODO auto method tidy up.
+      # ???? new lines breaks
+      # ???? unable to extract type restriction on its own macro
+      {{ "##{crystal_method ||= method_name}".id }}
+      {{ "##{args ||= [] of Symbol}".id }}
 
-  res = Crocoa.send_msg({{receiver}}, {{method_name}}
-    {% for i in 0 ... args.length %}
-      , objc_method_arg({{"arg#{i}".id}}, {{args[i]}})
-    {% end %}
-  )
+      res = Hoop.send_msg({{receiver}}, {{method_name}}
+        {% for i in 0 ... args.length %}
+          , objc_method_arg({{"arg#{i}".id}}, {{args[i]}})
+        {% end %}
+      )
 
-  # TODO wrap result if the class is exported from crystal and exposed to obj-c
-  # ???? Posible to get all NSObject+ of the system? maybe using objc_class macro
-  {% if crystal_method == "initialize" %}
-    @obj = res
-  {% elsif returnType == "NSUInteger" %}
-    res.address
-  {% elsif returnType == "BOOL" %}
-    res.address != 0
-  {% elsif returnType == "unichar" %}
-    res.address.chr
-  {% elsif returnType == "void" || returnType == nil %}
-    self
-  {% elsif returnType == "id" %}
-    klass = NSClass.new(LibObjC.objc_msgSend(res, "class".to_sel.to_objc) as LibObjC::Class)
-    if klass.name == "__NSCFString"
-      NSString.new(res)
-    elsif klass.name == "NSButton"
-      NSButton.new(res)
-    elsif klass.name == "NSTextField"
-      NSTextField.new(res)
-    else
-      # TODO wrap result. NSObject+ if id
-      res
+      # TODO wrap result if the class is exported from crystal and exposed to obj-c
+      # ???? Posible to get all NSObject+ of the system? maybe using objc_class macro
+      {% if crystal_method == "initialize" %}
+        @obj = res
+      {% elsif returnType == "NSUInteger" %}
+        res.address
+      {% elsif returnType == "BOOL" %}
+        res.address != 0
+      {% elsif returnType == "unichar" %}
+        res.address.chr
+      {% elsif returnType == "void" || returnType == nil %}
+        self
+      {% elsif returnType == "id" %}
+        klass = NSClass.new(LibObjC.objc_msgSend(res, "class".to_sel.to_objc) as LibObjC::Class)
+        if klass.name == "__NSCFString"
+          NSString.new(res)
+        elsif klass.name == "NSButton"
+          NSButton.new(res)
+        elsif klass.name == "NSTextField"
+          NSTextField.new(res)
+        else
+          # TODO wrap result. NSObject+ if id
+          res
+        end
+      {% else %}
+        # runtime return type check
+        if {{returnType}} == "id"
+          AnyObject.new(res)
+        elsif {{returnType}} == "unsigned long long"
+          res.address
+        else
+          raise "not implemented as return type #{returnType}"
+        end
+      {% end %}
     end
-  {% else %}
-    # runtime return type check
-    if {{returnType}} == "id"
-      AnyObject.new(res)
-    elsif {{returnType}} == "unsigned long long"
-      res.address
-    else
-      raise "not implemented as return type #{returnType}"
-    end
-  {% end %}
-end
 
-macro objc_method(method_name, args = nil, returnType = nil, crystal_method = nil)
-  {% if crystal_method == "initialize" %}
-    objc_method_helper(nsclass.send_msg("alloc"), {{method_name}}, {{args}}, {{returnType}}, {{crystal_method}})
-  {% else %}
-    objc_method_helper(self.to_objc, {{method_name}}, {{args}}, {{returnType}}, {{crystal_method}})
-  {% end %}
-end
+    macro objc_method(method_name, args = nil, returnType = nil, crystal_method = nil)
+      {% if crystal_method == "initialize" %}
+        objc_method_helper(nsclass.send_msg("alloc"), {{method_name}}, {{args}}, {{returnType}}, {{crystal_method}})
+      {% else %}
+        objc_method_helper(self.to_objc, {{method_name}}, {{args}}, {{returnType}}, {{crystal_method}})
+      {% end %}
+    end
 
     macro export_class(objc_class_name = nil)
       objc_class
-      $_{{@type.name.id}}_classPair = LibObjC.objc_allocateClassPair({{@type.superclass}}.nsclass.obj, "{{@type.name}}", 0_u32)
+      $_{{@type.name.id}}_classPair = LibObjC.objc_allocateClassPair({{@type.superclass}}.nsclass.obj, "#{{{@type.name}}}", 0u32)
       LibObjC.objc_registerClassPair($_{{@type.name.id}}_classPair)
       $x_{{@type.name.id}}_assoc_key = "hoop_objc"
 
