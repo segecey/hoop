@@ -15,6 +15,8 @@ make install
 ### Basic example
 
 ```crystal
+# app.cr
+
 require "src/hoop"
 
 include Hoop
@@ -76,8 +78,12 @@ ns_log "app launched"
 
 NSApp.activate_ignoring_other_apps = true
 NSApp.run
-
 ```
+
+```shell
+$ hoop app.cr
+```
+
 ## Screenshot
 # ![Screenshot](https://raw.githubusercontent.com/hoopcr/hoop/master/assets/example_app.png)
 
