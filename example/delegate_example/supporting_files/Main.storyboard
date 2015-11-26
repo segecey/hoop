@@ -732,7 +732,7 @@
                         <animations/>
                     </view>
                     <connections>
-                        <segue destination="Lt5-VS-nyH" kind="show" identifier="testIden" id="Zlc-n4-hI4"/>
+                        <segue destination="Lt5-VS-nyH" kind="modal" identifier="testIden" id="Zlc-n4-hI4"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
