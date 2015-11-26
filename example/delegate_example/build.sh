@@ -9,4 +9,4 @@ ibtool --errors --warnings --notices --output-format human-readable-text --compi
 cp Info.plist Sample.app/Contents/
 cp assets/* Sample.app/Contents/Resources
 
-crystal build app.cr -o Sample.app/Contents/MacOS/app
+hoop build app.cr -o Sample.app/Contents/MacOS/app
