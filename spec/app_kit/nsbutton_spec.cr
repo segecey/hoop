@@ -1,3 +1,5 @@
+require "../spec_helper"
+
 describe "NSButton" do
 	it "can be created" do
 		NSButton.new NSRect.new(0,150,100,50).to_objc
