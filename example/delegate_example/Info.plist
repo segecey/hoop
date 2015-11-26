@@ -5,7 +5,9 @@
 	<key>CFBundleExecutable</key>
 	<string>app</string>
 	<key>CFBundleIdentifier</key>
-	<string>Sample.App</string>
+	<string>Hoop!</string>
+	<key>CFBundleIconFile</key>
+	<string>Icon.icns</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
