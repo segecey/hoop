@@ -10,6 +10,8 @@ module Hoop
       @obj = LibObjC.objc_getClass(className)
     end
 
+    def_equals obj
+
     def name
       String.new(LibObjC.class_getName(@obj))
     end
@@ -39,8 +41,25 @@ module Hoop
       total = LibObjC.objc_getClassList(nil, 0u64)
       buffer = Pointer(LibObjC::Class).malloc(total)
       LibObjC.objc_getClassList(buffer, total)
-      buffer.to_slice(total).map { |x| NSClass.new x }.each do |nsclass|
+      buffer
+        .to_slice(total)
+        .map { |x| NSClass.new x }
+        .each do |nsclass|
         yield nsclass
+      end
+    end
+
+    #def instance_method(sel)
+      #NSMethod.new LibObjC.class_getInstanceMethod(@obj, sel.to_sel.to_objc)
+    #end
+    def instance_methods
+      method_count = 0u32
+      methods = LibObjC.class_copyMethodList(@obj, out method_count)
+
+      unless method_count == 0 || methods.nil?
+        methods.to_slice(method_count.to_i).each do |method|
+          yield NSMethod.new(method)
+        end
       end
     end
 

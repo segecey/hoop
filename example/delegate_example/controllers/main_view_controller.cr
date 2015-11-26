@@ -2,6 +2,7 @@ class ViewController < NSViewController
 	export_class
 	@@username_text_field
 	@@password_text_field
+	@@text_view
 
 	def view_did_load
     self.super_view_did_load
@@ -22,10 +23,11 @@ class ViewController < NSViewController
 		username_text_field = @@username_text_field as NSTextField
 		password_text_field = @@password_text_field as NSTextField
 
+
     username = "#{username_text_field.value}"
     password = "#{password_text_field.value}"
 
-    self.perform_segue_with_identifier "testIden", nil
+    self.perform_segue_with_identifier "testIden", nil.to_objc
 
     ns_log "#{$login_url}?username=#{username}&password=#{password}"
     url = NSURL.url_with_string "#{$login_url}?username=#{username}&password=#{password}"
@@ -51,9 +53,14 @@ class ViewController < NSViewController
   end
 
   def conncetion_did_receive_data connection, data
-    result = NSJSONSerialization.json_object_with_data data.to_objc, LibCF::NSJSONReadingOptions::KNilOptions, nil
+    result = NSJSONSerialization.json_object_with_data data.to_objc, LibCF::NSJSONReadingOptions::KNilOptions, nil.to_objc
     error = result.object_for_key "message"
-    ns_log "message: #{error}"
+
+		text_view = view.view_with_tag = 333
+		text_view = text_view as NSTextField
+		text_view.value = "#{error}"
+		text_view.set_hidden = false
+
   end
 	export "view_did_load", "viewDidLoad"
 	export "example_button_action", "exampleButtonAction"

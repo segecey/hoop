@@ -15,7 +15,7 @@ module Hoop
     end
 
     def as(nsclass : Class)
-      raise "Runtime obj-c cast error '#{self.nsclass}' is not a '#{nsclass.nsclass}'" unless is_kind_of_class(nsclass)
+      
       nsclass.new(to_objc)
     end
 
