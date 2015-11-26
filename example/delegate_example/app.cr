@@ -1,8 +1,14 @@
 require "./req"
 require "./views/myview"
-require "./controllers/second_view_controller"
-require "./controllers/main_view_controller"
-require "./handlers/timer_handler"
+#require "./controllers/second_view_controller"
+#require "./controllers/main_view_controller"
+#require "./handlers/timer_handler"
+
+class MyView < NSView
+  #export_class
+  #export "draw_rect", "drawRect:", "v@:@"
+end
+
 
 class MyAppDelegate < NSObject
 	export_class
@@ -15,4 +21,4 @@ class MyAppDelegate < NSObject
   export "did_finish_launching", "applicationDidFinishLaunching:", "v@:@"
 end
 
-LibAppKit.ns_application_main 0u32, nil
+LibAppKit.ns_application_main 0u32, nil as Pointer(Pointer(UInt8))

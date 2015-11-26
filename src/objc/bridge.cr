@@ -8,6 +8,9 @@ struct Nil
     0xFF_u8
     #self
   end
+  def to_id
+    AnyObject.new(to_objc)
+  end
 end
 
 struct Float
