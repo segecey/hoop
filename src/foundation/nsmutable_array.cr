@@ -12,10 +12,8 @@ module Hoop
   end
 end
 
-
 module Hoop
-	class NSMutableDictionary < NSObject
-		import_class
-		
-	end
+  class NSMutableDictionary < NSObject
+    import_class
+  end
 end

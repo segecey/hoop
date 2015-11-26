@@ -2,7 +2,6 @@ require "./../src/hoop"
 
 include Hoop
 
-
 url = NSURL.url_with_string "http://jsonplaceholder.typicode.com/posts/1"
 req = NSURLRequest.request_with_url url.to_objc
 res = NSURLResponse.new

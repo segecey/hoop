@@ -1,6 +1,6 @@
 module HoopExample
   class Main
-    def initialize window
+    def initialize(window)
       @window = window
       setup()
     end

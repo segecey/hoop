@@ -2,9 +2,9 @@ require "./../src/hoop"
 
 include Hoop
 
-
 class Foo < NSObject
   export_class
+
   def testAction
     alert = NSAlert.new
     alert.add_button_with_title = "Excellent"
@@ -14,7 +14,6 @@ class Foo < NSObject
 
   export "testAction"
 end
-
 
 NSAutoreleasePool.new
 NSApp.activation_policy = LibAppKit::NSApplicationActivationPolicy::Regular
@@ -28,7 +27,7 @@ window.make_key_and_order_front nil
 
 hoop_logo = NSImage.init_with_image "logo.png"
 
-hoop_logo_view = NSImageView.new(NSRect.new(200,350, 300, 300).to_objc)
+hoop_logo_view = NSImageView.new(NSRect.new(200, 350, 300, 300).to_objc)
 hoop_logo_view.set_image = hoop_logo.to_objc
 
 window.content_view << hoop_logo_view.to_objc
@@ -38,7 +37,6 @@ hello_label.value = "#{NSHost.current_host.localized_name}. 😎".to_objc
 hello_label_font = NSFont.bold_system_font_of_size = 23.0
 hello_label.set_font = hello_label_font.to_objc
 window.content_view << hello_label.to_objc
-
 
 love_label = NSTextField.new(NSRect.new(200, 160, 300, 70).to_objc)
 love_label.value = "I ❤️ Crystal !".to_objc
@@ -53,7 +51,6 @@ test_button.set_title = "Test Button"
 test_button.target = Foo.new.to_objc
 test_button.action = sel
 window.content_view << test_button.to_objc
-
 
 ns_log "app launched"
 
