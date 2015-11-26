@@ -86,7 +86,11 @@ module Hoop
           {% if objc_class_name %}
             {{objc_class_name}}
           {% else %}
-            self.to_s["Hoop::".size..-1]
+            if self.to_s.includes? "Hoop::"
+              self.to_s["Hoop::".size..-1]
+            else
+              self.to_s["".size..-1]
+            end
           {% end %}
         end
         NSClass.new(class_name)

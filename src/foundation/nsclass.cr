@@ -19,7 +19,7 @@ module Hoop
       unless s.nil?
         NSClass.new(s)
       else
-        nil
+        nil.to_objc
       end
     end
 
@@ -36,7 +36,7 @@ module Hoop
     end
 
     def self.all
-      total = LibObjC.objc_getClassList(nil, 0u64)
+      total = LibObjC.objc_getClassList(nil.to_objc, 0u64)
       buffer = Pointer(LibObjC::Class).malloc(total)
       LibObjC.objc_getClassList(buffer, total)
       buffer.to_slice(total).map { |x| NSClass.new x }.each do |nsclass|

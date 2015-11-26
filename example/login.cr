@@ -2,57 +2,7 @@ require "./../src/hoop"
 
 include Hoop
 
-class TimerHandler < NSObject
-  export_class
-  def timer_action
-    puts "timer action called"
-  end
-  export "timer_action"
-end
 
-NSTimer.scheduled_timer_with_time_interval 1.0, TimerHandler.new.to_objc, "timer_action".to_sel.to_objc, nil, true
-
-
-class Asd < NSObject
-	export_class
-  LibObjC.class_addProtocol(Asd.nsclass.obj, LibObjC.objc_getProtocol("NSURLConnectionDelegate"))
-
-	def example_button_action
-    url = NSURL.url_with_string "http://sedat.ninja/test.php?username=0x73&password=secret"
-    req = NSMutableURLRequest.new url.to_objc, LibAppKit::NSURLRequestCachePolicy::NSURLRequestUseProtocolCachePolicy, 60.0
-    conn = NSURLConnection.new req.to_objc, self.to_objc
-    conn.start
-	end
-
-
-  def conncetion_did_fail_with_error conncetion, error
-    a = error as NSError
-    alert = NSAlert.new
-    alert.add_button_with_title = "OK"
-    alert.set_message_text = "Connection error !"
-    alert.run_modal
-  end
-
-  def connection_did_finish_loading connection
-    ns_log "connection finished"
-  end
-
-  def conncetion_did_receive_response connection, response
-    response = response as NSURLResponse
-  end
-
-  def conncetion_did_receive_data connection, data
-    result = NSJSONSerialization.json_object_with_data data.to_objc, LibCF::NSJSONReadingOptions::KNilOptions, nil
-    m = result.object_for_key "mmm"
-    puts m.to_objc
-  end
-
-  export "conncetion_did_fail_with_error", "connection:didFailWithError:", "v@:@v"
-  export "connection_did_finish_loading","connectionDidFinishLoading:", "v@:@"
-  export "conncetion_did_receive_response", "connection:didReceiveResponse:", "v@:@v"
-  export "conncetion_did_receive_data", "connection:didReceiveData:", "v@:@v"
-  export "example_button_action", "exampleButtonAction"
-end
 
 NSAutoreleasePool.new
 NSApp.activation_policy = LibAppKit::NSApplicationActivationPolicy::Regular
@@ -63,7 +13,7 @@ $window = NSWindow.new(NSRect.new(0, 0, 700, 700).to_objc, LibAppKit::NSWindowMa
 $window.set_background_color = NSColor.white_color.to_objc
 $window.cascade_top_left_from_point NSPoint.new(20, 20).to_objc
 $window.title = appName
-$window.make_key_and_order_front nil
+$window.make_key_and_order_front nil.to_objc
 
 $username_text_field = NSTextField.new(NSRect.new(50, 600, 600, 50).to_objc)
 $username_text_field.set_font = (NSFont.bold_system_font_of_size = 30.0).to_objc
@@ -74,30 +24,26 @@ $password_text_field.set_font = (NSFont.bold_system_font_of_size = 30.0).to_objc
 $window.content_view << $password_text_field.to_objc
 
 class NotificationHandler < NSObject
-  export_class
+  #export_class
   def notification_receive notification
     ns_log "notification received"
     progress_indicator = NSProgressIndicator.new(NSRect.new(50, 50, 600, 50).to_objc)
-    progress_indicator.start_animation nil
     progress_indicator.set_style = LibAppKit::NSProgressIndicatorStyle::NSProgressIndicatorBarStyle
     progress_indicator.remove_from_superview
 
     $window.content_view << progress_indicator.to_objc
   end
 
-  export "notification_receive", "notificationReceive:", "v@:@"
+  #export "notification_receive", "notificationReceive:", "v@:@"
 end
 
-
-NSNotificationCenter.default_center.add_observer NotificationHandler.new.to_objc, "notificationReceive:".to_sel.to_objc, "hoop_test", nil
 
 class LoginHandler < NSObject
   export_class
   @@default_username = "sdev"
   @@default_password = "sdev"
 
-  def login_action button
-    NSNotificationCenter.default_center.post_notification_with_user_info "hoop_test", nil, nil
+  def login_action
     username = $username_text_field.value
     password = $password_text_field.value
 
@@ -118,15 +64,15 @@ class LoginHandler < NSObject
     alert.run_modal
 
   end
-  export "login_action", "loginAction:", "v@:@"
+  export "login_action", "loginAction"
 end
 
-$login_button = NSButton.new(NSRect.new(50, 460, 600, 50).to_objc)
-$login_button.set_title = "Giriş Yap"
-$login_button.target = Asd.new.to_objc
-$login_button.action = "exampleButtonAction".to_sel.to_objc
-$window.content_view << $login_button.to_objc
+h = LoginHandler.new
 
+$login_button = NSButton.new(NSRect.new(50, 460, 600, 50).to_objc)
+$login_button.target = h.to_objc
+$login_button.action = "loginAction".to_sel.to_objc
+$window.content_view << $login_button.to_objc
 ns_log "app launched"
 
 NSApp.activate_ignoring_other_apps = true

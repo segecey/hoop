@@ -5,7 +5,7 @@ end
 
 struct Nil
   def to_objc
-    0x00_u8
+    0xFF_u8
     #self
   end
 end
