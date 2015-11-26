@@ -27,7 +27,6 @@ class ViewController < NSViewController
     username = "#{username_text_field.value}"
     password = "#{password_text_field.value}"
 
-    self.perform_segue_with_identifier "testIden", nil.to_objc
 
     ns_log "#{$login_url}?username=#{username}&password=#{password}"
     url = NSURL.url_with_string "#{$login_url}?username=#{username}&password=#{password}"
@@ -60,6 +59,15 @@ class ViewController < NSViewController
 		text_view = text_view as NSTextField
 		text_view.value = "#{error}"
 		text_view.set_hidden = false
+
+		if  "#{error}" == "success login"
+			self.perform_segue_with_identifier "testIden", nil.to_objc
+		else
+			alert = NSAlert.new
+      alert.add_button_with_title = "OK"
+      alert.set_message_text = "#{error}"
+      alert.run_modal
+		end
 
   end
 	export "view_did_load", "viewDidLoad"
