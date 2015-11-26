@@ -156,8 +156,7 @@ end
 
     macro export_class(objc_class_name = nil)
       objc_class
-      $_{{@type.name.id}}_classPair = LibObjC.objc_allocateClassPair({{@type.superclass}}.nsclass.obj, {{@type.name.id}}.nsclass as Pointer(UInt8), 0_u32)
-      # FIX ME: LSOpenURLsWithRole() failed with error -10810 for the file /Users/SDev/Desktop/Projects/hoop/example/delegate_example/Sample.app.
+      $_{{@type.name.id}}_classPair = LibObjC.objc_allocateClassPair({{@type.superclass}}.nsclass.obj, "{{@type.name}}", 0_u32)
       LibObjC.objc_registerClassPair($_{{@type.name.id}}_classPair)
       $x_{{@type.name.id}}_assoc_key = "hoop_objc"
 
