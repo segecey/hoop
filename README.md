@@ -1,9 +1,9 @@
-hoop
-=======
+## hoop
+
 [![Build Status](https://travis-ci.org/hoopcr/hoop.svg)](https://travis-ci.org/hoopcr/hoop)  [![Join the chat at https://gitter.im/amerobin/hoop](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/hoopcr/hoop?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
-### How to try ?
+## How to try ?
 
 ```shell
 git clone git@github.com:hoopcr/hoop.git
@@ -11,7 +11,7 @@ shards install
 crystal run example/login.cr
 ```
 
-### Basic example
+## Basic example
 
 ```crystal
 # app.cr
@@ -54,8 +54,7 @@ $ crystal app.cr
 ## Screenshot
 # ![Screenshot](https://raw.githubusercontent.com/hoopcr/hoop/master/assets/example_app.png)
 
-Contributing
-============
+## Contributing
 
 1. Fork it ( https://github.com/hoopcr/hoop/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
