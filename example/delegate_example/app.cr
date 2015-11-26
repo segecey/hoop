@@ -1,13 +1,10 @@
 require "./req"
 require "./views/myview"
 #require "./controllers/second_view_controller"
-#require "./controllers/main_view_controller"
+require "./controllers/main_view_controller"
 #require "./handlers/timer_handler"
 
-class MyView < NSView
-  #export_class
-  #export "draw_rect", "drawRect:", "v@:@"
-end
+
 
 
 class MyAppDelegate < NSObject
