@@ -1,7 +1,6 @@
 require "./req"
 require "./views/myview"
-require "./controllers/second_view_controller"
-require "./controllers/main_view_controller"
+require "./controllers/*"
 
 class MyAppDelegate < NSObject
 	export_class

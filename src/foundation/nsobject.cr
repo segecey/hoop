@@ -60,6 +60,10 @@ module Hoop
             NSTextField.new(res)
           elsif klass.name == "NSImageView"
             NSImageView.new(res)
+          elsif klass.name == "NSTableView"
+            NSTableView.new(res)
+          elsif klass.name == "NSTableColumn"
+            NSTableColumn.new(res)
           elsif klass.name == "NSImage"
             NSImage.new(res)
           elsif klass.name == "CALayer"
