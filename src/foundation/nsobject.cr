@@ -66,6 +66,8 @@ module Hoop
             NSTableColumn.new(res)
           elsif klass.name == "NSImage"
             NSImage.new(res)
+          elsif klass.name == "NSDictionary"
+            NSDictionary.new(res)
           elsif klass.name == "CALayer"
             CALayer.new(res)
           else

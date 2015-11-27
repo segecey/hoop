@@ -1,5 +1,5 @@
 require "./req"
-require "./views/myview"
+require "./views/*"
 require "./controllers/*"
 
 class MyAppDelegate < NSObject
