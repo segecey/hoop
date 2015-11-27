@@ -58,6 +58,12 @@ module Hoop
             NSButton.new(res)
           elsif klass.name == "NSTextField"
             NSTextField.new(res)
+          elsif klass.name == "NSImageView"
+            NSImageView.new(res)
+          elsif klass.name == "NSImage"
+            NSImage.new(res)
+          elsif klass.name == "CALayer"
+            CALayer.new(res)
           else
             res
           end

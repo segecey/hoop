@@ -16,5 +16,7 @@ module Hoop
 
     objc_method "target", nil, "id"
     objc_method "setTarget:", ["id"], "void", "target="
+    objc_method "tag", nil, "NSUInteger", "tag"
+    objc_method "setLayer:", ["CALayer"], "void", "set_layer="
   end
 end

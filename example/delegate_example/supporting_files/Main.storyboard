@@ -743,11 +743,11 @@
         <scene sceneID="iNw-pa-Fsp">
             <objects>
                 <viewController id="Lt5-VS-nyH" customClass="SecondViewController" sceneMemberID="viewController">
-                    <view key="view" id="RR6-qm-X1I">
+                    <view key="view" id="RR6-qm-X1I" customClass="MyView">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" tag="222" translatesAutoresizingMaskIntoConstraints="NO" id="Utz-ne-jto">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="Utz-ne-jto">
                                 <rect key="frame" x="128" y="53" width="194" height="194"/>
                                 <animations/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logo.png" id="cAq-Ca-wE1"/>
