@@ -3,6 +3,9 @@ class ViewController < NSViewController
 	@@username_text_field
 	@@password_text_field
 	@@text_view
+	
+	property :example_outlet
+	property :property_example_outlet
 
 	def view_did_load
     self.super_view_did_load
@@ -17,6 +20,7 @@ class ViewController < NSViewController
 		sad = sad as NSButton
 		sad.target = self.to_objc
 		sad.action = "exampleButtonAction".to_sel.to_objc
+
 	end
 
 	def example_button_action
@@ -71,6 +75,8 @@ class ViewController < NSViewController
 
   end
 	export "view_did_load", "viewDidLoad"
+	export "example_outlet"
+	export "property_example_outlet"
 	export "example_button_action", "exampleButtonAction"
   export "conncetion_did_fail_with_error", "connection:didFailWithError:", "v@:v@"
   export "connection_did_finish_loading","connectionDidFinishLoading:", "v@:@"

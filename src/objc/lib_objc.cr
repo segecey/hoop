@@ -24,6 +24,11 @@ lib LibObjC
     types : UInt8*
   end
 
+  struct ObjcPropertyAttribute
+    name : UInt8*
+    value : UInt8*
+  end
+
   fun objc_getClass(UInt8*) : Class
   fun object_getClass(UInt8*) : Class
   fun class_getName(Class) : UInt8*
@@ -49,6 +54,11 @@ lib LibObjC
   end
   fun objc_getAssociatedObject (UInt8*, UInt8*) : UInt8*;
   fun objc_setAssociatedObject (UInt8*, UInt8*, UInt8*, AssociationPolicy) : Void
+
+  #    class_addProperty(<#__unsafe_unretained Class cls#>, <#const char *name#>, <#const objc_property_attribute_t *attributes#>, <#unsigned int attributeCount#>)
+  #     class_addMethod(<#__unsafe_unretained Class cls#>, <#SEL name#>, <#IMP imp#>, <#const char *types#>)
+  # OBJC_EXPORT id objc_msgSend(id self, SEL op, ...)
+  fun class_addProperty(Class, UInt8*, ObjcPropertyAttribute, UInt8)
 
   fun class_addMethod(Class, SEL, IMP, UInt8*) : UInt8
   fun class_replaceMethod(UInt8*, SEL, IMP, UInt8*) : IMP

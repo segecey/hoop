@@ -4,3 +4,4 @@
 *.nib
 *.log
 .hoop
+test.cr
