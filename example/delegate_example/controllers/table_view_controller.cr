@@ -30,7 +30,7 @@ class TableViewController < NSViewController
   def view_for_table_column table_view, table_column, row
     view = NSView.new NSRect.new(50.00, 50.00, 100, 70.00).to_objc
     image_view = NSImageView.new NSRect.new(10.0, 20.0, 30.00, 30.00).to_objc
-    image_view.set_image = (NSImage.init_with_image "logo.png").to_objc
+    image_view.set_image = (NSImage.image_named "logo.png").to_objc
     view << image_view.to_objc
     view.to_objc
   end
