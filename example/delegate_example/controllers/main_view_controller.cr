@@ -4,37 +4,6 @@ class ViewController < NSViewController
 	@@password_text_field
 	@@text_view
 
-	a = LibObjC::ObjcPropertyAttribute.new
-	a.name = "T".to_objc
-	a.value = "@\"NSTextField\"".to_objc
-
-	b = LibObjC::ObjcPropertyAttribute.new
-	b.name = "C".to_objc
-	b.value = "".to_objc
-
-	c = LibObjC::ObjcPropertyAttribute.new
-	c.name = "V".to_objc
-	c.value = "example_outlet".to_objc
-
-	LibObjC.class_addProperty(ViewController.nsclass.obj, "example_outlet", [a, b, c], 3)
-
-
-
-	aa = LibObjC::ObjcPropertyAttribute.new
-	aa.name = "T".to_objc
-	aa.value = "@\"BOOL\"".to_objc
-
-	bb = LibObjC::ObjcPropertyAttribute.new
-	bb.name = "C".to_objc
-	bb.value = "".to_objc
-
-	cc = LibObjC::ObjcPropertyAttribute.new
-	cc.name = "V".to_objc
-	cc.value = "property_example_outlet".to_objc
-
-	LibObjC.class_addProperty(ViewController.nsclass.obj, "property_example_outlet", [aa, bb, cc], 3)
-
-
 	def view_did_load
     self.super_view_did_load
 		view = self.view as NSView
@@ -48,7 +17,6 @@ class ViewController < NSViewController
 		sad = sad as NSButton
 		sad.target = self.to_objc
 		sad.action = "exampleButtonAction".to_sel.to_objc
-		ns_log "example outlet::::: #{LibObjC.class_getProperty(ViewController.nsclass.obj, "example_outlet".to_objc)}"
 	end
 
 	def example_button_action

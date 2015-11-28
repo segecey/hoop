@@ -200,6 +200,10 @@ module Hoop
       LibObjC.class_addMethod($_{{@type.name.id}}_classPair, {{selector}}.to_sel.to_objc, $x_{{@type.name.id}}_{{method_name.id}}_imp.pointer as LibObjC::IMP, {{types_encoding}})
     end
 
+    macro class_var variable, variable_type, is_outlet = false
+      
+    end
+
     macro objc(code)
       {{ run "../support/export_method", @type.name, code }}
     end

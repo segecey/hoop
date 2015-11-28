@@ -68,11 +68,16 @@ lib LibObjC
   #     class_addMethod(<#__unsafe_unretained Class cls#>, <#SEL name#>, <#IMP imp#>, <#const char *types#>)
   # OBJC_EXPORT id objc_msgSend(id self, SEL op, ...)
   # objc_property_t class_getProperty(Class cls, const char *name)
+  # Ivar class_getInstanceVariable(Class cls, const char *name)
   # property implementation
   fun class_addProperty(Class, UInt8*, ObjcPropertyAttribute*, UInt8)
   fun class_getProperty(Class, UInt8*) : LibObjC::ObjcPropertyAttribute
   fun class_addMethod(Class, SEL, IMP, UInt8*) : UInt8
   fun class_getInstanceVariable(Class, UInt8*) : Ivar
+  fun class_getClassVariable(Class, UInt8*) : Ivar
+  fun object_setInstanceVariable(UInt8*, UInt8*, UInt8*) : Ivar
+  fun object_getInstanceVariable(UInt8*, UInt8*, UInt8**) : Ivar
+
 
   fun class_replaceMethod(UInt8*, SEL, IMP, UInt8*) : IMP
   fun class_copyMethodList(Class, UInt32*) : Method*
