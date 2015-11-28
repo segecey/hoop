@@ -15,6 +15,15 @@ lib LibObjC
     super_class : ObjcClass*
   end
 
+  struct ObjcIvar;end
+  struct ObjcIvar
+    ivar_name : UInt8*
+    ivar_type : UInt8*
+    ivar_offset : UInt32*
+  end
+
+  type Ivar = ObjcIvar
+
 
   alias Class = ObjcClass*
   type Method = Void*
@@ -58,11 +67,14 @@ lib LibObjC
   #    class_addProperty(<#__unsafe_unretained Class cls#>, <#const char *name#>, <#const objc_property_attribute_t *attributes#>, <#unsigned int attributeCount#>)
   #     class_addMethod(<#__unsafe_unretained Class cls#>, <#SEL name#>, <#IMP imp#>, <#const char *types#>)
   # OBJC_EXPORT id objc_msgSend(id self, SEL op, ...)
-  fun class_addProperty(Class, UInt8*, ObjcPropertyAttribute, UInt8)
-
+  # objc_property_t class_getProperty(Class cls, const char *name)
+  # property implementation
+  fun class_addProperty(Class, UInt8*, ObjcPropertyAttribute*, UInt8)
+  fun class_getProperty(Class, UInt8*) : LibObjC::ObjcPropertyAttribute
   fun class_addMethod(Class, SEL, IMP, UInt8*) : UInt8
-  fun class_replaceMethod(UInt8*, SEL, IMP, UInt8*) : IMP
+  fun class_getInstanceVariable(Class, UInt8*) : Ivar
 
+  fun class_replaceMethod(UInt8*, SEL, IMP, UInt8*) : IMP
   fun class_copyMethodList(Class, UInt32*) : Method*
   fun method_getName(Method) : SEL
   fun method_copyArgumentType(Method, UInt64) : UInt8*
