@@ -5,8 +5,9 @@ end
 struct Nil
   def to_objc
     0xFF_u8
-    #self
+    # self
   end
+
   def to_id
     AnyObject.new(to_objc)
   end
@@ -80,10 +81,8 @@ end
 # TODO
 struct Tuple
   def map_to_objc
-
   end
 end
-
 
 module Hoop
   def self.send_msg(objc_target, selector_name, *args)

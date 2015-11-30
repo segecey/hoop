@@ -3,8 +3,9 @@ require "./views/*"
 require "./controllers/*"
 
 class MyAppDelegate < NSObject
-	export_class
-  #LibObjC.class_addProtocol(MyAppDelegate.nsclass.obj, LibObjC.objc_getProtocol("NSApplicationDelegate"))
+  export_class
+
+  # LibObjC.class_addProtocol(MyAppDelegate.nsclass.obj, LibObjC.objc_getProtocol("NSApplicationDelegate"))
   def did_finish_launching(notification)
     ns_log "didFinishLaunching !!1"
   end

@@ -18,16 +18,16 @@ class TableViewController < NSViewController
     table_view.set_data_source = self.to_objc
   end
 
-  def number_of_rows_in_table_view table_view
+  def number_of_rows_in_table_view(table_view)
     return $list.count
   end
 
-  def object_value_for_table_column table_view, table_column, row
+  def object_value_for_table_column(table_view, table_column, row)
     ns_log "#{table_column}"
     return 1
   end
 
-  def view_for_table_column table_view, table_column, row
+  def view_for_table_column(table_view, table_column, row)
     view = NSView.new NSRect.new(50.00, 50.00, 100, 70.00).to_objc
     image_view = NSImageView.new NSRect.new(10.0, 20.0, 30.00, 30.00).to_objc
     image_view.set_image = (NSImage.image_named "logo.png").to_objc
@@ -35,12 +35,12 @@ class TableViewController < NSViewController
     view.to_objc
   end
 
-  def height_of_row table_view, row
+  def height_of_row(table_view, row)
     return 70.00.to_cgfloat
   end
 
-#- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row;
-#- (nullable NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(nullable NSTableColumn *)tableColumn row:(NSInteger)row NS_AVAILABLE_MAC(10_7);
+  # - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row;
+  # - (nullable NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(nullable NSTableColumn *)tableColumn row:(NSInteger)row NS_AVAILABLE_MAC(10_7);
   export "view_did_load", "viewDidLoad"
   export "number_of_rows_in_table_view", "numberOfRowsInTableView:", "v@:@"
   export "view_for_table_column", "tableView:viewForTableColumn:row:", "v@:@:@"

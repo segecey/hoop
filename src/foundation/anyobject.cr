@@ -15,7 +15,6 @@ module Hoop
     end
 
     def as(nsclass : Class)
-      
       nsclass.new(to_objc)
     end
 

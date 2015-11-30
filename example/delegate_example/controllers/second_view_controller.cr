@@ -1,5 +1,6 @@
 class SecondViewController < NSViewController
   export_class
+
   def view_did_load
     self.super_view_did_load
     view = self.view as NSView
@@ -9,7 +10,6 @@ class SecondViewController < NSViewController
     button = button as NSButton
     button.target = self.to_objc
     button.action = "openTableViewController".to_sel.to_objc
-
   end
 
   def open_table_view_controller
