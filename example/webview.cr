@@ -14,7 +14,7 @@ $window.make_key_and_order_front nil.to_objc
 
 class WebViewDelegate < NSObject
   export_class
-  LibObjC.class_addProtocol(WebViewDelegate.nsclass.obj, LibObjC.objc_getProtocol("WKNavigationDelegate"))
+  add_delegate "WKNavigationDelegate"
 end
 
 $webview = WKWebView.new NSRect.new(0, 0, 700, 700).to_objc
