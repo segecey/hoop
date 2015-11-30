@@ -26,7 +26,7 @@ lib LibCF
     KNilOptions = 0
   end
 
-  #fun nslog = NSLog(UInt32*, ...)
+  # fun nslog = NSLog(UInt32*, ...)
   fun nslog = NSLog(...)
 
   fun force : Void

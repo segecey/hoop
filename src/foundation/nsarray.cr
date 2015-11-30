@@ -1,4 +1,5 @@
 require "./nsobject"
+
 module Hoop
   class NSArray < NSObject
     register_class

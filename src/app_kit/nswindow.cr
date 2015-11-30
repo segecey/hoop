@@ -2,7 +2,7 @@ module Hoop
   class NSWindow < NSResponder
     register_class
 
-    objc_method "initWithContentRect:styleMask:backing:defer:", ["NSRect","NSUInteger","NSBackingStoreType","BOOL"], "id", "initialize"
+    objc_method "initWithContentRect:styleMask:backing:defer:", ["NSRect", "NSUInteger", "NSBackingStoreType", "BOOL"], "id", "initialize"
     objc_method "cascadeTopLeftFromPoint:", ["NSPoint"], "void", "cascade_top_left_from_point"
     objc_method "title", nil, "NSString"
     objc_method "setTitle:", ["NSString"], "void", "title="

@@ -1,4 +1,5 @@
 require "./nsobject"
+
 module Hoop
   class NSDictionary < NSObject
     register_class

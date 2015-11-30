@@ -1,4 +1,5 @@
 require "./nsobject"
+
 module Hoop
   class NSAlert < NSObject
     register_class

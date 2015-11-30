@@ -13,10 +13,8 @@ module Hoop
   end
 end
 
-
 module Hoop
-	class NSMutableDictionary < NSObject
-		register_class
-
-	end
+  class NSMutableDictionary < NSObject
+    register_class
+  end
 end

@@ -49,9 +49,9 @@ module Hoop
       end
     end
 
-    #def instance_method(sel)
-      #NSMethod.new LibObjC.class_getInstanceMethod(@obj, sel.to_sel.to_objc)
-    #end
+    # def instance_method(sel)
+    # NSMethod.new LibObjC.class_getInstanceMethod(@obj, sel.to_sel.to_objc)
+    # end
     def instance_methods
       method_count = 0u32
       methods = LibObjC.class_copyMethodList(@obj, out method_count)

@@ -2,12 +2,9 @@ require "./../src/hoop"
 
 include Hoop
 
-
-
 NSAutoreleasePool.new
 NSApp.activation_policy = LibAppKit::NSApplicationActivationPolicy::Regular
 appName = "Hello, World !".to_objc
-
 
 $window = NSWindow.new(NSRect.new(0, 0, 700, 700).to_objc, LibAppKit::NSWindowMask::Titled, LibAppKit::NSBackingStoreType::Buffered, false)
 $window.set_background_color = NSColor.white_color.to_objc
@@ -24,8 +21,8 @@ $password_text_field.set_font = (NSFont.bold_system_font_of_size = 30.0).to_objc
 $window.content_view << $password_text_field.to_objc
 
 class NotificationHandler < NSObject
-  #export_class
-  def notification_receive notification
+  # export_class
+  def notification_receive(notification)
     ns_log "notification received"
     progress_indicator = NSProgressIndicator.new(NSRect.new(50, 50, 600, 50).to_objc)
     progress_indicator.set_style = LibAppKit::NSProgressIndicatorStyle::NSProgressIndicatorBarStyle
@@ -34,9 +31,8 @@ class NotificationHandler < NSObject
     $window.content_view << progress_indicator.to_objc
   end
 
-  #export "notification_receive", "notificationReceive:", "v@:@"
+  # export "notification_receive", "notificationReceive:", "v@:@"
 end
-
 
 class LoginHandler < NSObject
   export_class
@@ -57,13 +53,12 @@ class LoginHandler < NSObject
     ns_log "#{@@default_username}/#{@@default_password}"
     ns_log "#{password}/#{username}"
 
-
-    alert  = NSAlert.new
+    alert = NSAlert.new
     alert.add_button_with_title = alert_button_title
     alert.set_message_text = alert_message
     alert.run_modal
-
   end
+
   export "login_action", "loginAction"
 end
 

@@ -9,13 +9,15 @@ lib LibObjC
 
   type Protocol = Void*
 
-  struct ObjcClass;end
+  struct ObjcClass; end
+
   struct ObjcClass
     isa : ObjcClass*
     super_class : ObjcClass*
   end
 
-  struct ObjcIvar;end
+  struct ObjcIvar; end
+
   struct ObjcIvar
     ivar_name : UInt8*
     ivar_type : UInt8*
@@ -23,7 +25,6 @@ lib LibObjC
   end
 
   type Ivar = ObjcIvar
-
 
   alias Class = ObjcClass*
   type Method = Void*
@@ -46,7 +47,7 @@ lib LibObjC
   fun class_getSuperclass(Class) : Class
 
   fun objc_msgSend(UInt8*, SEL, ...) : UInt8*
-  #fun objc_msgSend(...) : UInt8*
+  # fun objc_msgSend(...) : UInt8*
 
   fun sel_registerName(UInt8*) : SEL
   fun sel_getName(SEL) : UInt8*
@@ -55,14 +56,14 @@ lib LibObjC
   fun objc_registerClassPair(Class) : Void
 
   enum AssociationPolicy : Int32
-    ASSIGN  = 0x0u64,
-    RETAIN_NONATOMIC  = 0x1u64,
-    COPY_NONATOMIC  = 0x3u64,
-    RETAIN  = 0x01401u64,
-    COPY  = 0x01403u64
+    ASSIGN           =     0x0u64,
+    RETAIN_NONATOMIC =     0x1u64,
+    COPY_NONATOMIC   =     0x3u64,
+    RETAIN           = 0x01401u64,
+    COPY             = 0x01403u64
   end
-  fun objc_getAssociatedObject (UInt8*, UInt8*) : UInt8*;
-  fun objc_setAssociatedObject (UInt8*, UInt8*, UInt8*, AssociationPolicy) : Void
+  fun objc_getAssociatedObject(UInt8*, UInt8*) : UInt8*
+  fun objc_setAssociatedObject(UInt8*, UInt8*, UInt8*, AssociationPolicy) : Void
 
   #    class_addProperty(<#__unsafe_unretained Class cls#>, <#const char *name#>, <#const objc_property_attribute_t *attributes#>, <#unsigned int attributeCount#>)
   #     class_addMethod(<#__unsafe_unretained Class cls#>, <#SEL name#>, <#IMP imp#>, <#const char *types#>)
@@ -77,7 +78,6 @@ lib LibObjC
   fun class_getClassVariable(Class, UInt8*) : Ivar
   fun object_setInstanceVariable(UInt8*, UInt8*, UInt8*) : Ivar
   fun object_getInstanceVariable(UInt8*, UInt8*, UInt8**) : Ivar
-
 
   fun class_replaceMethod(UInt8*, SEL, IMP, UInt8*) : IMP
   fun class_copyMethodList(Class, UInt32*) : Method*

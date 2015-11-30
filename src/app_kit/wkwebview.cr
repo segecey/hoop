@@ -1,4 +1,5 @@
 require "./NSView"
+
 module Hoop
   class WKWebView < NSView
     register_class

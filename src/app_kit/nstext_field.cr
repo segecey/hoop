@@ -1,7 +1,6 @@
 module Hoop
   class NSTextField < NSControl
     register_class
-    
     objc_method "init", nil, "id", "initialize"
     objc_method "setEditable:", ["BOOL"], nil, "set_editable="
     objc_method "sizeToFit", nil, "void", "size_to_fit"
