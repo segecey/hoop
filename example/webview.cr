@@ -20,7 +20,7 @@ end
 $webview = WKWebView.new NSRect.new(0, 0, 700, 700).to_objc
 $webview.set_navigation_delegate WebViewDelegate.new.to_objc
 
-url = NSURL.url_with_string "http://sedat.ninja"
+url = NSURL.url_with_string "http://crystal-lang.org"
 req = NSURLRequest.request_with_url url.to_objc
 
 $webview.load_request req.to_objc

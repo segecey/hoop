@@ -30,16 +30,21 @@ $window.cascade_top_left_from_point NSPoint.new(20, 20).to_objc
 $window.title = appName
 $window.make_key_and_order_front nil.to_objc
 
-$username_text_field = NSTextField.new(NSRect.new(50, 600, 600, 50).to_objc)
-$username_text_field.set_font = (NSFont.bold_system_font_of_size = 30.0).to_objc
-$window.content_view << $username_text_field.to_objc
+class WebViewDelegate < NSObject
+  export_class
+  add_delegate "WKNavigationDelegate"
+end
 
-$password_text_field = NSTextField.new(NSRect.new(50, 530, 600, 50).to_objc)
-$password_text_field.set_font = (NSFont.bold_system_font_of_size = 30.0).to_objc
-$window.content_view << $password_text_field.to_objc
+$webview = WKWebView.new NSRect.new(0, 0, 700, 700).to_objc
+$webview.set_navigation_delegate WebViewDelegate.new.to_objc
 
-$login_button = NSButton.new(NSRect.new(50, 460, 600, 50).to_objc)
-$window.content_view << $login_button.to_objc
+url = NSURL.url_with_string "http://crystal-lang.org"
+req = NSURLRequest.request_with_url url.to_objc
+
+$webview.load_request req.to_objc
+
+$window.content_view << $webview.to_objc
+
 ns_log "app launched"
 
 NSApp.activate_ignoring_other_apps = true
