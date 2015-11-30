@@ -2,7 +2,7 @@ require "./NSView"
 
 module Hoop
   abstract class NSControl < NSView
-    import_class
+    register_class
 
     macro inherited
       objc_method "initWithFrame:", ["NSRect"], "id", "initialize"

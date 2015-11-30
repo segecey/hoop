@@ -1,6 +1,6 @@
 module Hoop
   class NSWindow < NSResponder
-    import_class
+    register_class
 
     objc_method "initWithContentRect:styleMask:backing:defer:", ["NSRect","NSUInteger","NSBackingStoreType","BOOL"], "id", "initialize"
     objc_method "cascadeTopLeftFromPoint:", ["NSPoint"], "void", "cascade_top_left_from_point"

@@ -2,7 +2,7 @@ require "./nsobject"
 
 module Hoop
   class NSNotificationCenter < NSObject
-    import_class
+    register_class
     objc_static_method "defaultCenter", nil, "NSNotificationCenter", "default_center"
     objc_method "postNotificationName:object:", ["NSString", "id"], "void", "post_notification"
     objc_method "postNotificationName:object:userInfo:", ["NSString", "id", "NSDictionary"], "void", "post_notification_with_user_info"

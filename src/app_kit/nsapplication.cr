@@ -1,6 +1,6 @@
 module Hoop
   class NSApplication < NSObject
-    import_class
+    register_class
 
     objc_init_method "sharedApplication", "shared_application"
 

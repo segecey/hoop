@@ -2,7 +2,7 @@ require "./NSResponder"
 
 module Hoop
   class NSView < NSResponder
-    import_class
+    register_class
 
     objc_method "initWithFrame:", ["NSRect"], "instancetype", "initialize"
     #objc_method "initWithCoder:", ["NSCoder"], "id", "initialize"

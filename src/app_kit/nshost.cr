@@ -1,6 +1,6 @@
 module Hoop
   class NSHost < NSObject
-    import_class
+    register_class
 
     objc_static_method "currentHost", nil, "NSHost", "current_host"
     objc_method "localizedName", nil, "NSString", "localized_name"
