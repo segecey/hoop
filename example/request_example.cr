@@ -12,3 +12,5 @@ result = NSJSONSerialization.json_object_with_data data.to_objc, LibCF::NSJSONRe
 
 body = result.object_for_key "error"
 title = result.object_for_key "message"
+
+ns_log "#{body} - #{title}"
