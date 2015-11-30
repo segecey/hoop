@@ -11,6 +11,7 @@ module Hoop
     objc_method "viewWithTag:", ["NSUInteger"], "id", "view_with_tag="
     objc_method "drawRect:", ["NSRect"], "void", "draw_rect"
     objc_method "subviews", nil, "NSArray", "subviews"
+    objc_method "frame", nil, "NSRect", "frame"
 
   end
 end
