@@ -92,7 +92,7 @@ module Hoop
       objc_method_helper(nsclass.obj as Pointer(UInt8), {{method_name}}, {{args}}, {{returnType}}, {{"self.#{crystal_method.id}"}})
     end
 
-    macro import_class(objc_class_name = nil)
+    macro register_class(objc_class_name = nil)
       def self.nsclass
         class_name = begin
           {% if objc_class_name %}
@@ -184,6 +184,10 @@ module Hoop
 
     end
 
+    macro add_delegate(delegate)
+      LibObjC.class_addProtocol({{@type.name.id}}.nsclass.obj, LibObjC.objc_getProtocol({{delegate}}))
+    end
+
     macro export(method_name, selector = nil, types_encoding = nil)
       {{ "##{selector ||= method_name}".id }}
       {{ "##{types_encoding ||= "v@:"}".id }}
@@ -208,7 +212,7 @@ module Hoop
       {{ run "../support/export_method", @type.name, code }}
     end
 
-    import_class
+    register_class
 
     def nsclass
       self.class.nsclass

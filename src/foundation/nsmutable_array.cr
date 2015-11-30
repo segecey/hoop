@@ -2,7 +2,7 @@ require "./nsobject"
 
 module Hoop
   class NSMutableArray < NSObject
-    import_class
+    register_class
 
     objc_method "init", nil, "NSMutableArray", "initialize"
 
@@ -15,6 +15,6 @@ end
 
 module Hoop
   class NSMutableDictionary < NSObject
-    import_class
+    register_class
   end
 end

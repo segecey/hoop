@@ -2,6 +2,6 @@ require "./nsobject"
 
 module Hoop
   class CALayer < NSObject
-    import_class
+    register_class
   end
 end

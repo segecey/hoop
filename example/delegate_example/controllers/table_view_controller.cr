@@ -5,8 +5,10 @@ $list.add_string "Three"
 
 class TableViewController < NSViewController
   export_class
-  LibObjC.class_addProtocol(TableViewController.nsclass.obj, LibObjC.objc_getProtocol("NSTableViewDataSource"))
-  LibObjC.class_addProtocol(TableViewController.nsclass.obj, LibObjC.objc_getProtocol("NSTableViewDelegate"))
+
+  add_delegate "NSTableViewDataSource"
+  add_delegate "NSTableViewDelegate"
+
   property :list
 
   def view_did_load
@@ -39,8 +41,6 @@ class TableViewController < NSViewController
     return 70.00.to_cgfloat
   end
 
-  # - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row;
-  # - (nullable NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(nullable NSTableColumn *)tableColumn row:(NSInteger)row NS_AVAILABLE_MAC(10_7);
   export "view_did_load", "viewDidLoad"
   export "number_of_rows_in_table_view", "numberOfRowsInTableView:", "v@:@"
   export "view_for_table_column", "tableView:viewForTableColumn:row:", "v@:@:@"

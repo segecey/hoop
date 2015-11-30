@@ -1,5 +1,5 @@
 module Hoop
   class NSCoder < NSObject
-    import_class
+    register_class
   end
 end

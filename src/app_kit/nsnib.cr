@@ -1,6 +1,6 @@
 module Hoop
   class NSNib < NSObject
-    import_class
+    register_class
 
     objc_method "initWithNibNamed:bundle:", ["NSString", "NSBundle"], "id", "initialize"
 

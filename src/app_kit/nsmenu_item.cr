@@ -1,6 +1,6 @@
 module Hoop
   class NSMenuItem < NSObject
-    import_class
+    register_class
 
     objc_method "initWithTitle:action:keyEquivalent:", ["NSString", "SEL", "NSString"], "id", "initialize"
 

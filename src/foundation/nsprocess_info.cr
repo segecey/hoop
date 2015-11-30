@@ -1,6 +1,6 @@
 module Hoop
   class NSProcessInfo < NSObject
-    import_class
+    register_class
 
     objc_init_method "processInfo", "process_info"
 

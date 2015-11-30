@@ -763,16 +763,39 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="hFA-wK-TbB">
+                                <rect key="frame" x="107" y="57" width="236" height="32"/>
+                                <animations/>
+                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RVT-31-DOf">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <animations/>
                     </view>
                     <connections>
                         <segue destination="TWf-pX-FMs" kind="modal" identifier="tableView" id="c8z-Vw-9vB"/>
+                        <segue destination="xGv-Oz-QcZ" kind="modal" identifier="webViewId" id="m1X-B0-CqA"/>
                     </connections>
                 </viewController>
                 <customObject id="EYa-0S-TOd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="593" y="632"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="RzT-4y-OVK">
+            <objects>
+                <viewController id="xGv-Oz-QcZ" customClass="WebViewController" sceneMemberID="viewController">
+                    <view key="view" id="4gQ-WH-If3">
+                        <rect key="frame" x="0.0" y="0.0" width="700" height="700"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </view>
+                </viewController>
+                <customObject id="5eZ-vj-Fke" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1367" y="1240"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="1lQ-tu-HFS">
@@ -872,7 +895,7 @@
                                 </clipView>
                                 <animations/>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="zlH-5T-tkX">
-                                    <rect key="frame" x="1" y="7" width="0.0" height="16"/>
+                                    <rect key="frame" x="1" y="283" width="448" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </scroller>
