@@ -5,3 +5,4 @@
 *.log
 .hoop
 test.cr
+todo_app/
