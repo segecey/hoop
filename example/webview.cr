@@ -27,7 +27,7 @@ $webview.load_request req.to_objc
 
 $window.content_view << $webview.to_objc
 
-ns_log "app launched"
+ns_log "app launched %@"
 
 NSApp.activate_ignoring_other_apps = true
 NSApp.run
