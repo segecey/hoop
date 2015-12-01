@@ -188,6 +188,10 @@ module Hoop
       LibObjC.class_addProtocol({{@type.name.id}}.nsclass.obj, LibObjC.objc_getProtocol({{delegate}}))
     end
 
+    macro add_delegate(klass, delegate)
+      LibObjC.class_addProtocol({{klass}}.nsclass.obj, LibObjC.objc_getProtocol({{delegate}}))
+    end
+
     macro export(method_name, selector = nil, types_encoding = nil)
       {{ "##{selector ||= method_name}".id }}
       {{ "##{types_encoding ||= "v@:"}".id }}
