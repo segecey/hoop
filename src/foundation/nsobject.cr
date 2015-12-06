@@ -70,6 +70,8 @@ module Hoop
             NSDictionary.new(res)
           elsif klass.name == "CALayer"
             CALayer.new(res)
+          elsif klass.name == "IOBluetoothDevice"
+            IOBluetoothDevice.new(res)
           else
             res
           end
