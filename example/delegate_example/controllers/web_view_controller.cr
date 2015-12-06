@@ -6,7 +6,7 @@ class WebViewController < NSViewController
   export_class
   add_delegate WebViewDelegate, "WKNavigationDelegate"
 
-  def view_did_load
+  action "view_did_load", nil, "viewDidLoad" do
     ns_log "WebViewController called !!!1"
     view = self.view as NSView
 
@@ -20,6 +20,4 @@ class WebViewController < NSViewController
 
     view << webview.to_objc
   end
-
-  export "view_did_load", "viewDidLoad"
 end

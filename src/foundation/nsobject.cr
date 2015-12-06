@@ -208,6 +208,34 @@ module Hoop
       LibObjC.class_addMethod($_{{@type.name.id}}_classPair, {{selector}}.to_sel.to_objc, $x_{{@type.name.id}}_{{method_name.id}}_imp.pointer as LibObjC::IMP, {{types_encoding}})
     end
 
+    macro action action_name, params = nil, exploded_name = nil
+      {% if params != nil %}
+        {{ split_params = params.split(",") }}.size
+        {{ tmp_char = ":" }}
+        {% if split_params.size > 1 %}
+          {% for t, i in split_params %}
+            {% if i == 0 %}
+              {{ a = "v@:@" }}
+            {% else %}
+              {{ a += tmp_char }}
+              {% if tmp_char == ":" %}
+                {{ tmp_char = "@" }}
+              {% else %}
+                {{ tmp_char = ":" }}
+              {% end %}
+            {% end %}
+          {% end %}
+        {% elsif split_params.size == 1 %}
+          {{ a = "v@:@" }}
+        {% end %}
+      {% end %}
+
+      def {{action_name.id}}{% if params != nil %}({% for t, i in split_params %}{% if i > 0 %},{% end %}{{split_params[i].id}}{% end %}){% end %}
+        {{yield.id}}
+      end
+      export {{action_name}}{% if exploded_name != nil %}, {{exploded_name}} {% end %}{% if params != nil %}, {{a}} {% end %}
+    end
+
     macro class_var(variable, variable_type, is_outlet = false)
 
     end
