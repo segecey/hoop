@@ -10,6 +10,5 @@ module Hoop
 
     objc_method "setMainMenu:", ["NSMenu"], "void", "main_menu="
   end
-
   NSApp = NSApplication.shared_application
 end
