@@ -1,7 +1,7 @@
 class SecondViewController < NSViewController
   export_class
 
-  def view_did_load
+  action "view_did_load", nil ,"viewDidLoad" do
     self.super_view_did_load
     view = self.view as NSView
     ns_log "second view controller !!!123212"
@@ -17,15 +17,12 @@ class SecondViewController < NSViewController
     button2.action = "openWebViewController".to_sel.to_objc
   end
 
-  def open_table_view_controller
+  action "open_table_view_controller", nil, "openTableViewController" do
     self.perform_segue_with_identifier "tableView", nil.to_objc
   end
 
-  def open_web_view_controller
+  action "open_web_view_controller", nil, "openWebViewController" do
     self.perform_segue_with_identifier "webViewId", nil.to_objc
   end
 
-  export "open_table_view_controller", "openTableViewController"
-  export "open_web_view_controller", "openWebViewController"
-  export "view_did_load", "viewDidLoad"
 end

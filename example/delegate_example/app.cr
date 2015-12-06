@@ -2,15 +2,12 @@ require "./req"
 require "./views/*"
 require "./controllers/*"
 
-class MyAppDelegate < NSObject
+class HoopDelegate < NSObject
+  add_delegate HoopDelegate, "NSApplicationDelegate"
   export_class
-
-  # LibObjC.class_addProtocol(MyAppDelegate.nsclass.obj, LibObjC.objc_getProtocol("NSApplicationDelegate"))
-  def did_finish_launching(notification)
+  action "did_finish_launching", "notification", "applicationDidFinishLaunching:" do
     ns_log "didFinishLaunching !!1"
   end
-
-  export "did_finish_launching", "applicationDidFinishLaunching:", "v@:@"
 end
 
-LibAppKit.ns_application_main 0u32, nil
+Helper.start_app

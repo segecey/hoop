@@ -641,7 +641,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="MyAppDelegate"/>
+                <customObject id="Voe-Tx-rLC" customClass="HoopDelegate"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
@@ -781,7 +781,7 @@
                 </viewController>
                 <customObject id="EYa-0S-TOd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="593" y="632"/>
+            <point key="canvasLocation" x="708" y="617"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="RzT-4y-OVK">

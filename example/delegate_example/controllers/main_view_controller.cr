@@ -4,7 +4,7 @@ class ViewController < NSViewController
   @@password_text_field
   @@text_view
 
-  def view_did_load
+  action "view_did_load", nil, "viewDidLoad" do
     self.super_view_did_load
     view = self.view as NSView
     @@username_text_field = view.view_with_tag = 1
@@ -19,7 +19,7 @@ class ViewController < NSViewController
     sad.action = "exampleButtonAction".to_sel.to_objc
   end
 
-  def example_button_action
+  action "example_button_action", nil, "exampleButtonAction" do
     username_text_field = @@username_text_field as NSTextField
     password_text_field = @@password_text_field as NSTextField
 
@@ -33,22 +33,22 @@ class ViewController < NSViewController
     conn.start
   end
 
-  def conncetion_did_fail_with_error(conncetion, error)
+  action "conncetion_did_fail_with_error","conncetion, error", "connection:didFailWithError:" do
     alert = NSAlert.new
     alert.add_button_with_title = "OK"
     alert.set_message_text = "Connection error !"
     alert.run_modal
   end
 
-  def connection_did_finish_loading(connection)
+  action "connection_did_finish_loading","connection","connectionDidFinishLoading:" do
     ns_log "connection finished"
   end
 
-  def conncetion_did_receive_response(connection, response)
+  action "conncetion_did_receive_response", "connection, response", "connection:didReceiveResponse:" do
     response = response as NSURLResponse
   end
 
-  def conncetion_did_receive_data(connection, data)
+  action "conncetion_did_receive_data", "connection,data", "connection:didReceiveData:" do
     result = NSJSONSerialization.json_object_with_data data.to_objc, LibCF::NSJSONReadingOptions::KNilOptions, nil.to_objc
     error = result.object_for_key "message"
 
@@ -66,11 +66,4 @@ class ViewController < NSViewController
       alert.run_modal
     end
   end
-
-  export "view_did_load", "viewDidLoad"
-  export "example_button_action", "exampleButtonAction"
-  export "conncetion_did_fail_with_error", "connection:didFailWithError:", "v@:v@"
-  export "connection_did_finish_loading", "connectionDidFinishLoading:", "v@:@"
-  export "conncetion_did_receive_response", "connection:didReceiveResponse:", "v@:v@"
-  export "conncetion_did_receive_data", "connection:didReceiveData:", "v@:v@"
 end
