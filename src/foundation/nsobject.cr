@@ -178,6 +178,10 @@ module Hoop
         NSClass.new $_{{@type.name.id}}_classPair
       end
 
+      def self.to_pointer
+        self.nsclass as Pointer(UInt8)
+      end
+
 
       def initialize
         initialize(Hoop.send_msg(nsclass.send_msg("alloc"), "init"))
@@ -279,7 +283,7 @@ module Hoop
 
     objc_method "retain"
     objc_method "release"
-
+    objc_static_method "alloc", nil, "id", "alloc"
     objc_method "performSelectorOnMainThread:withObject:waitUntilDone:", ["SEL", "id", "BOOL"], "void", "perform_selector_on_main_thread_with_object_wait_until_done"
   end
 end
