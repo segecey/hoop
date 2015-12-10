@@ -9,7 +9,7 @@ module Hoop
     objc_method "setBackgroundColor:", ["NSColor"], "void", "set_background_color="
     objc_method "backgroundColor", nil, "NSColor", "background_color"
     objc_method "setHidden:", ["BOOL"], "void", "set_hidden"
-
+    objc_method "layer", nil, "id", "get_layer"
     def value
       self.string_value
     end
