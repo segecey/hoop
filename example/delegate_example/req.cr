@@ -1,3 +1,6 @@
 require "../../src/hoop.cr"
 include Hoop
-$login_url = "http://sedat.ninja/test.php"
+
+class HoopGlobal
+    LOGIN_URL = "http://sedat.ninja/test.php"
+end

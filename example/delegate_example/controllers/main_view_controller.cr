@@ -26,8 +26,8 @@ class ViewController < NSViewController
     username = "#{username_text_field.value}"
     password = "#{password_text_field.value}"
 
-    ns_log "#{$login_url}?username=#{username}&password=#{password}"
-    url = NSURL.url_with_string "#{$login_url}?username=#{username}&password=#{password}"
+    ns_log "#{HoopGlobal::LOGIN_URL}?username=#{username}&password=#{password}"
+    url = NSURL.url_with_string "#{HoopGlobal::LOGIN_URL}?username=#{username}&password=#{password}"
     req = NSMutableURLRequest.new url.to_objc, LibAppKit::NSURLRequestCachePolicy::NSURLRequestUseProtocolCachePolicy, 60.0
     conn = NSURLConnection.new req.to_objc, self.to_objc
     conn.start
