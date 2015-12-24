@@ -16,7 +16,7 @@ module Hoop
       {% elsif type == "NSString" %}
         {{value.id}}.to_nsstring
       {% elsif type == "const_char_ptr" %}
-        {{value.id}}.cstr
+        {{value.id}}.to_unsafe
       {% else %}
         {{value.id}}
       {% end %}
@@ -214,7 +214,7 @@ module Hoop
       LibObjC.class_addMethod($_{{@type.name.id}}_classPair, {{selector}}.to_sel.to_objc, $x_{{@type.name.id}}_{{method_name.id}}_imp.pointer as LibObjC::IMP, {{types_encoding}})
     end
 
-    macro action action_name, params = nil, exploded_name = nil
+    macro action(action_name, params = nil, exploded_name = nil)
       {% if params != nil %}
         {{ split_params = params.split(",") }}.size
         {{ tmp_char = ":" }}

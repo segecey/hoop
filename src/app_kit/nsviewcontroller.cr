@@ -9,7 +9,7 @@ module Hoop
 
     # objc_method "viewDidLoad", nil, "void", "view_did_load"
 
-    def init_with_frame frame
+    def init_with_frame(frame)
       Hoop.send_msg(LibObjC.class_getSuperclass(LibObjC.objc_getClass(self.to_objc)) as Pointer(UInt8), "initWithFrame:", frame.to_objc)
     end
 
