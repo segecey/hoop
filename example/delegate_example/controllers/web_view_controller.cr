@@ -2,6 +2,10 @@ class WebViewDelegate < NSObject
   export_class
 end
 
+class MyWebView < WKWebView
+  export_class
+end
+
 class WebViewController < NSViewController
   export_class
   add_delegate WebViewDelegate, "WKNavigationDelegate"
