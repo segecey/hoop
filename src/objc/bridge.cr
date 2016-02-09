@@ -1,5 +1,5 @@
 class Object
-  abstract def to_objc
+  #abstract def to_objc
 end
 
 struct Nil

@@ -2,6 +2,24 @@ require "./../src/hoop"
 
 include Hoop
 
+
+@[Link(ldflags: "#{__DIR__}/mylib/TestButton.o")]
+lib LibMyButton
+  fun force() : Int32*
+end
+
+LibMyButton.force()
+
+class TestButton < NSButton
+  register_class
+  objc_method "title", nil, "NSString"
+  objc_method "setTitle:", ["NSString"], nil, "set_title="
+  objc_method "setHidden:", ["BOOL"], "void", "set_hidden="
+  objc_method "initWithFrame:andTitle:", ["NSRect", "NSString"], "id", "initialize"
+end
+
+button = TestButton.new(NSRect.new(0, 0, 100, 700).to_objc, "merhaba")
+
 NSAutoreleasePool.new
 NSApp.activation_policy = LibAppKit::NSApplicationActivationPolicy::Regular
 appName = "Hello, World !".to_objc
@@ -25,7 +43,8 @@ req = NSURLRequest.request_with_url url.to_objc
 
 $webview.load_request req.to_objc
 
-$window.content_view << $webview.to_objc
+#$window.content_view << $webview.to_objc
+$window.content_view << button.to_objc
 
 ns_log "app launched %@"
 
