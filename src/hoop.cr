@@ -1,4 +1,4 @@
-require "./objc/*"
+require "./obj-c/*"
 require "./foundation/*"
 require "./core_foundation/*"
 require "./app_kit/*"

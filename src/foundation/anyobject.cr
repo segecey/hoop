@@ -14,7 +14,7 @@ module Hoop
       @nsclass.not_nil!
     end
 
-    def as(nsclass : Class)
+    def set(nsclass : Class)
       nsclass.new(to_objc)
     end
 
@@ -26,7 +26,7 @@ module Hoop
       Hoop.send_msg(to_objc, "isKindOfClass:", nsclass.obj).address != 0
     end
 
-    macro method_missing(name, args, block)
+    macro _method_missing(name, args, block)
       method = nsclass.instance_method({{name}})
       objc_method_body {{name}}, nil, method.return_type
     end

@@ -19,9 +19,9 @@ module Hoop
     property :origin
     property :size
 
-    delegate x, @origin
-    delegate y, @origin
-    delegate height, @size
-    delegate width, @size
+    delegate x, to: @origin
+    delegate y, to: @origin
+    delegate height, to: @size
+    delegate width, to: @size
   end
 end

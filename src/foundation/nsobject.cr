@@ -1,8 +1,8 @@
 module Hoop
   abstract class NSObject
     macro objc_class
-      def initialize(s : UInt8*)
-        super(s)
+      def initialize(@obj : UInt8*)
+        super(@obj)
       end
     end
 
@@ -201,9 +201,9 @@ module Hoop
     macro export(method_name, selector = nil, types_encoding = nil)
       {{ "##{selector ||= method_name}".id }}
       {{ "##{types_encoding ||= "v@:"}".id }}
-      $x_{{@type.name.id}}_{{method_name.id}}_imp = ->(obj : UInt8*, _cmd : LibObjC::SEL {% for t, i in types_encoding[3..-1].chars %}{{", a#{i} : UInt8*".id}}{% end %}) {
+      $x_{{@type.name.id}}_{{method_name.id}}_imp : Proc(Pointer(UInt8), LibObjC::SEL, Pointer(UInt8), Nil) = ->(obj : UInt8*, _cmd : LibObjC::SEL {% for t, i in types_encoding[3..-1].chars %}{{", a#{i} : UInt8*".id}}{% end %}) {
         ptr = LibObjC.objc_getAssociatedObject(obj, $x_{{@type.name.id}}_assoc_key)
-        if ptr.nil?
+        if ptr.null?
           crystal_obj = {{@type.name.id}}.new(obj)
           LibObjC.objc_setAssociatedObject(obj, $x_{{@type.name.id}}_assoc_key, Pointer(UInt8).new(crystal_obj.object_id), LibObjC::AssociationPolicy::ASSIGN)
         else
