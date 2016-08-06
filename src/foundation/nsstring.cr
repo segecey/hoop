@@ -4,10 +4,6 @@ module Hoop
 
     objc_method "initWithUTF8String:", ["const_char_ptr"], "instancetype", "initialize"
 
-    def initialize(s : NSString)
-      raise "" # ???? compiler limitation
-    end
-
     def to_s(io)
       io << String.new(Hoop.send_msg(to_objc, "UTF8String"))
     end

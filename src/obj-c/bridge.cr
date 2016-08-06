@@ -1,15 +1,14 @@
 class Object
-  #abstract def to_objc
+
 end
 
 struct Nil
   def to_objc
     0xFF_u8
-    # self
   end
 
   def to_id
-    AnyObject.new(to_objc)
+    #AnyObject.new(to_objc)
   end
 end
 

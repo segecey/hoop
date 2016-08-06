@@ -11,7 +11,7 @@ module Hoop
       @obj
     end
 
-    delegate width, @obj
-    delegate height, @obj
+    delegate width, to: @obj
+    delegate height, to: @obj
   end
 end

@@ -1,6 +1,6 @@
 @[Link("objc")]
 lib LibObjC
-  type SEL = Void*
+type SEL = Void*
   type Class2 = UInt8*
   alias IMP = Void*
   alias IMPAlloc = Pointer(UInt8), LibObjC::SEL -> UInt8*
@@ -47,7 +47,6 @@ lib LibObjC
   fun class_getSuperclass(Class) : Class
 
   fun objc_msgSend(UInt8*, SEL, ...) : UInt8*
-  # fun objc_msgSend(...) : UInt8*
 
   fun sel_registerName(UInt8*) : SEL
   fun sel_getName(SEL) : UInt8*
@@ -55,7 +54,7 @@ lib LibObjC
   fun objc_allocateClassPair(Class, UInt8*, UInt32) : Class
   fun objc_registerClassPair(Class) : Void
 
-  enum AssociationPolicy : Int32
+  enum AssociationPolicy : Int64
     ASSIGN           =     0x0u64,
     RETAIN_NONATOMIC =     0x1u64,
     COPY_NONATOMIC   =     0x3u64,
@@ -65,12 +64,6 @@ lib LibObjC
   fun objc_getAssociatedObject(UInt8*, UInt8*) : UInt8*
   fun objc_setAssociatedObject(UInt8*, UInt8*, UInt8*, AssociationPolicy) : Void
 
-  #    class_addProperty(<#__unsafe_unretained Class cls#>, <#const char *name#>, <#const objc_property_attribute_t *attributes#>, <#unsigned int attributeCount#>)
-  #     class_addMethod(<#__unsafe_unretained Class cls#>, <#SEL name#>, <#IMP imp#>, <#const char *types#>)
-  # OBJC_EXPORT id objc_msgSend(id self, SEL op, ...)
-  # objc_property_t class_getProperty(Class cls, const char *name)
-  # Ivar class_getInstanceVariable(Class cls, const char *name)
-  # property implementation
   fun class_addProperty(Class, UInt8*, ObjcPropertyAttribute*, UInt8)
   fun class_getProperty(Class, UInt8*) : LibObjC::ObjcPropertyAttribute
   fun class_addMethod(Class, SEL, IMP, UInt8*) : UInt8

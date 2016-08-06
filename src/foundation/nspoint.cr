@@ -10,7 +10,7 @@ module Hoop
       @obj
     end
 
-    delegate x, @obj
-    delegate y, @obj
+    delegate x, to: @obj
+    delegate y, to: @obj
   end
 end
