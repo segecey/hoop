@@ -6,9 +6,9 @@
 ## How to try ?
 
 ```shell
-git clone git@github.com:hoopcr/hoop.git
+git clone git@github.com:0x73/hoop.git
 shards install
-crystal run example/login.cr
+crystal run example/webview_example.cr
 ```
 
 ## Basic example
@@ -55,9 +55,6 @@ NSApp.run
 ```shell
 $ crystal app.cr
 ```
-
-## Screenshot
-# ![Screenshot](https://raw.githubusercontent.com/hoopcr/hoop/master/assets/example_app.png)
 
 ## Contributing
 
