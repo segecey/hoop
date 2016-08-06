@@ -56,9 +56,6 @@ NSApp.run
 $ crystal app.cr
 ```
 
-## Screenshot
-# ![Screenshot](https://raw.githubusercontent.com/hoopcr/hoop/master/assets/example_app.png)
-
 ## Contributing
 
 1. Fork it ( https://github.com/hoopcr/hoop/fork )
