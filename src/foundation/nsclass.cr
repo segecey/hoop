@@ -30,7 +30,7 @@ module Hoop
     end
 
     def send_msg(message, *args)
-      Hoop.send_msg(@obj as Pointer(UInt8), message, *args)
+      Hoop.send_msg(@obj.as(Pointer(UInt8)), message, *args)
     end
 
     def to_s(io)

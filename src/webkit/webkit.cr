@@ -10,5 +10,5 @@ lib WebKit
     WKUserScriptInjectionTimeAtDocumentEnd
   end
   
-  fun force : Void*
+  #fun force : Void*
 end

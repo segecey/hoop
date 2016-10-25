@@ -1,4 +1,4 @@
 @[Link(framework: "IOBluetooth")]
 lib IOBluetooth
-  fun force : Void*
+  #fun force : Void*
 end

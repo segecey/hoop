@@ -9,14 +9,12 @@ type SEL = Void*
 
   type Protocol = Void*
 
-  struct ObjcClass; end
 
   struct ObjcClass
     isa : ObjcClass*
     super_class : ObjcClass*
   end
 
-  struct ObjcIvar; end
 
   struct ObjcIvar
     ivar_name : UInt8*
@@ -81,7 +79,7 @@ type SEL = Void*
   fun method_getTypeEncoding(Method) : UInt8*
   fun method_getDescription(Method) : ObjcMethodDescription*
   fun method_getImplementation(Method) : IMPAllocWithZone
-  fun method_getImplementationAlloc = method_getImplementation(Method) : IMPAlloc
+#  fun method_getImplementationAlloc = method_getImplementation(Method) : IMPAlloc
   fun method_setImplementation(Method, IMP) : IMP
   fun method_exchangeImplementations(Method, Method) : Void
 

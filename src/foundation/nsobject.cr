@@ -51,7 +51,7 @@ module Hoop
         {% elsif returnType == "void" || returnType == nil %}
           self
         {% elsif returnType == "id" %}
-          klass = NSClass.new(LibObjC.objc_msgSend(res, "class".to_sel.to_objc) as LibObjC::Class)
+          klass = NSClass.new(LibObjC.objc_msgSend(res, "class".to_sel.to_objc).as(LibObjC::Class))
           if klass.name == "__NSCFString"
             NSString.new(res)
           elsif klass.name == "NSButton"
@@ -91,7 +91,7 @@ module Hoop
 
     macro objc_static_method(method_name, args = nil, returnType = nil, crystal_method = nil)
       {{ "##{crystal_method ||= method_name}".id }}
-      objc_method_helper(nsclass.obj as Pointer(UInt8), {{method_name}}, {{args}}, {{returnType}}, {{"self.#{crystal_method.id}"}})
+      objc_method_helper(nsclass.obj.as(Pointer(UInt8)), {{method_name}}, {{args}}, {{returnType}}, {{"self.#{crystal_method.id}"}})
     end
 
     macro register_class(objc_class_name = nil)
@@ -137,7 +137,7 @@ module Hoop
       {% elsif returnType == "void" || returnType == nil %}
         self
       {% elsif returnType == "id" %}
-        klass = NSClass.new(LibObjC.objc_msgSend(res, "class".to_sel.to_objc) as LibObjC::Class)
+        klass = NSClass.new(LibObjC.objc_msgSend(res, "class".to_sel.to_objc).as(LibObjC::Class))
         if klass.name == "__NSCFString"
           NSString.new(res)
         elsif klass.name == "NSButton"
@@ -170,22 +170,22 @@ module Hoop
 
     macro export_class(objc_class_name = nil)
       objc_class
-      $_{{@type.name.id}}_classPair = LibObjC.objc_allocateClassPair({{@type.superclass}}.nsclass.obj, "#{{{@type.name}}}", 0u32)
-      LibObjC.objc_registerClassPair($_{{@type.name.id}}_classPair)
-      $x_{{@type.name.id}}_assoc_key = "hoop_objc"
+      @@_{{@type.name.id}}_classPair = LibObjC.objc_allocateClassPair({{@type.superclass}}.nsclass.obj, "#{{{@type.name}}}", 0u32)
+      LibObjC.objc_registerClassPair(@@_{{@type.name.id}}_classPair)
+      @@x_{{@type.name.id}}_assoc_key = "hoop_objc"
 
       def self.nsclass
-        NSClass.new $_{{@type.name.id}}_classPair
+        NSClass.new @@_{{@type.name.id}}_classPair
       end
 
       def self.to_pointer
-        self.nsclass as Pointer(UInt8)
+        self.nsclass.as(Pointer(UInt8))
       end
 
 
       def initialize
         initialize(Hoop.send_msg(nsclass.send_msg("alloc"), "init"))
-        LibObjC.objc_setAssociatedObject(to_objc, $x_{{@type.name.id}}_assoc_key, Pointer(UInt8).new(self.object_id), LibObjC::AssociationPolicy::ASSIGN)
+        LibObjC.objc_setAssociatedObject(to_objc, @@x_{{@type.name.id}}_assoc_key, Pointer(UInt8).new(self.object_id), LibObjC::AssociationPolicy::ASSIGN)
       end
 
     end
@@ -202,16 +202,16 @@ module Hoop
       {{ "##{selector ||= method_name}".id }}
       {{ "##{types_encoding ||= "v@:"}".id }}
       x_{{@type.name.id}}_{{method_name.id}}_imp = ->(obj : UInt8*, _cmd : LibObjC::SEL {% for t, i in types_encoding[3..-1].chars %}{{", a#{i} : UInt8*".id}}{% end %}) {
-        ptr = LibObjC.objc_getAssociatedObject(obj, $x_{{@type.name.id}}_assoc_key)
+        ptr = LibObjC.objc_getAssociatedObject(obj, @@x_{{@type.name.id}}_assoc_key)
         if ptr.null?
           crystal_obj = {{@type.name.id}}.new(obj)
-          LibObjC.objc_setAssociatedObject(obj, $x_{{@type.name.id}}_assoc_key, Pointer(UInt8).new(crystal_obj.object_id), LibObjC::AssociationPolicy::ASSIGN)
+          LibObjC.objc_setAssociatedObject(obj, @@x_{{@type.name.id}}_assoc_key, Pointer(UInt8).new(crystal_obj.object_id), LibObjC::AssociationPolicy::ASSIGN)
         else
           crystal_obj = ptr as {{@type.name.id}}
         end
         crystal_obj.{{method_name.id}}({% for t, i in types_encoding[3..-1].chars %}{% if i > 0 %}{{",".id}}{% end %}{{"a#{i}".id}}{% end %})
       }
-      LibObjC.class_addMethod($_{{@type.name.id}}_classPair, {{selector}}.to_sel.to_objc, x_{{@type.name.id}}_{{method_name.id}}_imp.pointer as LibObjC::IMP, {{types_encoding}})
+      LibObjC.class_addMethod(@@_{{@type.name.id}}_classPair, {{selector}}.to_sel.to_objc, x_{{@type.name.id}}_{{method_name.id}}_imp.pointer.as(LibObjC::IMP), {{types_encoding}})
     end
 
     macro action(action_name, params = nil, exploded_name = nil)
