@@ -1,19 +1,4 @@
-## hoop
-
-## How to try ?
-
-```shell
-git clone git@github.com:0x73/hoop.git
-shards install
-crystal run example/webview_example.cr
-```
-
-## Basic example
-
-```crystal
-# app.cr
-
-require "src/hoop"
+require "./../src/hoop"
 include Hoop
 
 NSAutoreleasePool.new
@@ -67,28 +52,3 @@ ns_log "app launched"
 
 NSApp.activate_ignoring_other_apps = true
 NSApp.run
-
-
-
-```
-
-```shell
-$ crystal app.cr
-```
-
-## Contributing
-
-1. Fork it ( https://github.com/hoopcr/hoop/fork )
-2. Create your feature branch (git checkout -b my-new-feature)
-3. Commit your changes (git commit -am 'Add some feature')
-4. Push to the branch (git push origin my-new-feature)
-5. Create a new Pull Request
-
-## Authors
-
-- Sedat G. Çiftçi [@0x73](https://github.com/0x73)
-- Serdar Doğruyol [@sdogruyol](https://github.com/sdogruyol)
-
-## Thanks
-
-Thanks to Manas for their awesome work on [Crocoa](https://github.com/manastech/crocoa).

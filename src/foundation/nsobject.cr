@@ -209,7 +209,7 @@ module Hoop
           crystal_obj = {{@type.name.id}}.new(obj)
           LibObjC.objc_setAssociatedObject(obj, @@x_{{@type.name.id}}_assoc_key, Pointer(UInt8).new(crystal_obj.object_id), LibObjC::AssociationPolicy::ASSIGN)
         else
-          crystal_obj = ptr as {{@type.name.id}}
+          crystal_obj = ptr.as({{@type.name.id}})
         end
         crystal_obj.{{method_name.id}}({% for t, i in types_encoding[3..-1].chars %}{% if i > 0 %}{{",".id}}{% end %}{{"a#{i}".id}}{% end %})
       }
