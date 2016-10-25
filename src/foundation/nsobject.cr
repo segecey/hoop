@@ -54,6 +54,8 @@ module Hoop
           klass = NSClass.new(LibObjC.objc_msgSend(res, "class".to_sel.to_objc).as(LibObjC::Class))
           if klass.name == "__NSCFString"
             NSString.new(res)
+          elsif klass.name == "__NSCFNumber"
+            NSNumber.new(res)
           elsif klass.name == "NSButton"
             NSButton.new(res)
           elsif klass.name == "NSTextField"
