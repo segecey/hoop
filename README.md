@@ -8,6 +8,11 @@ shards install
 crystal run example/webview_example.cr
 ```
 
+## Bundled Application
+```bash
+cd example/bundled_application && sh build.sh && open Hoop.app
+```
+
 ## Basic example
 
 ```crystal
@@ -67,8 +72,6 @@ ns_log "app launched"
 
 NSApp.activate_ignoring_other_apps = true
 NSApp.run
-
-
 
 ```
 
