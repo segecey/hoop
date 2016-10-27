@@ -10,8 +10,13 @@
 #import <Cocoa/Cocoa.h>
 int setup();
 
+@interface HoopView : NSView
+@property(nonatomic, strong) NSString *hoopClassName;
+@end
+
 @interface HoopLib : NSObject
 @property (nonatomic, strong) NSString *testText;
 - (void)blockTest:(void(id, NSString*))p;
+- (NSString *) newBlockTest:(void(id, id)) p andOtherBlock:(void(NSString*, NSString*))pp;
 - (void) test;
 @end

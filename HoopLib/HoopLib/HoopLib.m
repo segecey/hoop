@@ -13,23 +13,22 @@ int setup(){
     return 1;
 }
 
+@implementation HoopView
+
+@end
+
 @implementation HoopLib
 - (void)blockTest:(void(id, NSString*))p {
-	p(self, @"hello, from block");
+    p(self, @"hello, from block");
+}
+
+- (NSString*) newBlockTest:(void(id, id)) p andOtherBlock:(void(NSString*, NSString*))pp {
+    HoopView *tmpView = [[HoopView alloc] init];
+    [tmpView setHoopClassName:@"Hoop::View"];
+    p(self, tmpView);
+    pp(@"test1", @"test2");
     
-    CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
-    [animation setKeyPath:@"position.x"];
-    [animation setValues:@[]];
-    [animation setAdditive:<#(BOOL)#>]
-    [animation setDuration:<#(CFTimeInterval)#>]
-    [animation setKeyTimes:<#(NSArray<NSNumber *> * _Nullable)#>]
-    animation.keyPath = @"position.x";
-    animation.values = @[ @0, @10, @-10, @10, @0 ];
-    animation.keyTimes = @[ @0, @(1 / 6.0), @(3 / 6.0), @(5 / 6.0), @1 ];
-    animation.duration = 0.4;
-    
-    animation.additive = YES;
-    
+    return @"Hello !!1";
 }
 
 - (void) test {
