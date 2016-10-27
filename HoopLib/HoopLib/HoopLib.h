@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <Cocoa/Cocoa.h>
 int setup();
 
 @interface HoopLib : NSObject
-- (void)blockTest:(void(id))p;
+@property (nonatomic, strong) NSString *testText;
+- (void)blockTest:(void(id, NSString*))p;
 - (void) test;
 @end

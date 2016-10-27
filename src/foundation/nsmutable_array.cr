@@ -10,11 +10,13 @@ module Hoop
     objc_method "addObject:", ["id"], "void", "put"
     objc_method "addObject:", ["NSString"], "void", "add_string"
     objc_method "objectAtIndex:", ["NSUInteger"], "id", "get"
-  end
-end
 
-module Hoop
-  class NSMutableDictionary < NSObject
-    register_class
+    def each(&block)
+      i = 0
+      while i < self.count
+        yield self.object_at_index = i
+        i += 1
+      end
+    end
   end
 end

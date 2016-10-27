@@ -1,6 +1,6 @@
 @[Link("objc")]
 lib LibObjC
-type SEL = Void*
+  type SEL = Void*
   type Class2 = UInt8*
   alias IMP = Void*
   alias IMPAlloc = Pointer(UInt8), LibObjC::SEL -> UInt8*
@@ -9,12 +9,10 @@ type SEL = Void*
 
   type Protocol = Void*
 
-
   struct ObjcClass
     isa : ObjcClass*
     super_class : ObjcClass*
   end
-
 
   struct ObjcIvar
     ivar_name : UInt8*
@@ -23,6 +21,8 @@ type SEL = Void*
   end
 
   type Ivar = ObjcIvar
+
+  type HoopObject = UInt8*
 
   alias Class = ObjcClass*
   type Method = Void*
@@ -79,7 +79,7 @@ type SEL = Void*
   fun method_getTypeEncoding(Method) : UInt8*
   fun method_getDescription(Method) : ObjcMethodDescription*
   fun method_getImplementation(Method) : IMPAllocWithZone
-#  fun method_getImplementationAlloc = method_getImplementation(Method) : IMPAlloc
+  #  fun method_getImplementationAlloc = method_getImplementation(Method) : IMPAlloc
   fun method_setImplementation(Method, IMP) : IMP
   fun method_exchangeImplementations(Method, Method) : Void
 
