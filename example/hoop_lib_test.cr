@@ -5,24 +5,27 @@ include Hoop
 @[Link(ldflags: "#{__DIR__}/../HoopLib/HoopLib/hoop_lib.a")]
 lib LibHoop
   fun setup : Int32
+  fun dump_objc_methods(LibObjC::ObjcClass*) : Void
 end
 
 LibHoop.setup
 
 class HoopLib < NSObject
   register_class
-  objc_method "init", nil, "instancetype", "initialize"
-  objc_method "test", nil, "void", "test"
-  objc_method "blockTest:", ["id"], "void", "block_test"
-  objc_method "newBlockTest:andOtherBlock:", ["id", "id"], "NSString", "new_block_test"
-  objc_method "setTestText:", ["NSString"], "void", "set_test_text"
-  objc_method "testText", nil, "NSString", "test_text"
+  method "init", nil, "instancetype", "initialize"
+  method "test", nil, "void", "test"
+  method "blockTest:", ["id"], "void", "block_test"
+  method "newBlockTest:andOtherBlock:", ["id", "id"], "NSString", "new_block_test"
+  method "setTestText:", ["NSString"], "void", "set_test_text"
+  method "testText", nil, "NSString", "test_text"
 end
 
 class HoopView < NSView
   register_class
-  objc_method "hoopClassName", nil, "NSString", "hoop_class_name"
+  method "hoopClassName", nil, "NSString", "hoop_class_name"
 end
+
+LibHoop.dump_objc_methods(NSView.nsclass.obj)
 
 hoop_lib = HoopLib.new
 hoop_lib.set_test_text "test text"

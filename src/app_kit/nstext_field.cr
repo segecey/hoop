@@ -1,15 +1,16 @@
 module Hoop
   class NSTextField < NSControl
     register_class
-    objc_method "init", nil, "id", "initialize"
-    objc_method "setEditable:", ["BOOL"], nil, "set_editable="
-    objc_method "sizeToFit", nil, "void", "size_to_fit"
-    objc_method "setTextColor:", ["NSColor"], "void", "set_text_color="
-    objc_method "setFont:", ["NSFont"], "void", "set_font="
-    objc_method "setBackgroundColor:", ["NSColor"], "void", "set_background_color="
-    objc_method "backgroundColor", nil, "NSColor", "background_color"
-    objc_method "setHidden:", ["BOOL"], "void", "set_hidden"
-    objc_method "layer", nil, "id", "get_layer"
+    method "init", nil, "id", "initialize"
+    method "setEditable:", ["BOOL"], nil, "set_editable="
+    method "sizeToFit", nil, "void", "size_to_fit"
+    method "setTextColor:", ["NSColor"], "void", "set_text_color="
+    method "setFont:", ["NSFont"], "void", "set_font="
+    method "setBackgroundColor:", ["NSColor"], "void", "set_background_color="
+    method "backgroundColor", nil, "NSColor", "background_color"
+    method "setHidden:", ["BOOL"], "void", "set_hidden"
+    method "layer", nil, "id", "get_layer"
+
     def value
       self.string_value
     end

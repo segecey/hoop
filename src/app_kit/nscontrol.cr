@@ -5,18 +5,18 @@ module Hoop
     register_class
 
     macro inherited
-      objc_method "initWithFrame:", ["NSRect"], "id", "initialize"
+      method "initWithFrame:", ["NSRect"], "id", "initialize"
     end
 
-    objc_method "stringValue", nil, "NSString", "string_value"
-    objc_method "setStringValue:", ["NSString"], "void", "string_value="
+    method "stringValue", nil, "NSString", "string_value"
+    method "setStringValue:", ["NSString"], "void", "string_value="
 
-    # objc_method "action", nil, :SEL
-    objc_method "setAction:", ["SEL"], "void", "action="
+    # method "action", nil, :SEL
+    method "setAction:", ["SEL"], "void", "action="
 
-    objc_method "target", nil, "id"
-    objc_method "setTarget:", ["id"], "void", "target="
-    objc_method "tag", nil, "NSUInteger", "tag"
-    objc_method "setLayer:", ["CALayer"], "void", "set_layer="
+    method "target", nil, "id"
+    method "setTarget:", ["id"], "void", "target="
+    method "tag", nil, "NSUInteger", "tag"
+    method "setLayer:", ["CALayer"], "void", "set_layer="
   end
 end

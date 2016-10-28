@@ -27,7 +27,7 @@ int setup(){
     [tmpView setHoopClassName:@"Hoop::View"];
     p(self, tmpView);
     pp(@"test1", @"test2");
-    
+    [NSColor blueColor];
     return @"Hello !!1";
 }
 

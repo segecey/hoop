@@ -29,6 +29,13 @@ module Hoop
       end
     end
 
+    macro init_method(method_name, crystal_method = nil)
+      {{ "##{crystal_method ||= method_name}".id }}
+      def self.{{crystal_method.id}}
+        self.new(nsclass.send_msg({{method_name}}))
+      end
+    end
+
     macro objc_method_helper(receiver, method_name, args = nil, returnType = nil, crystal_method = nil)
       {{ "##{crystal_method ||= method_name}".id }}
       {{ "##{args ||= [] of Symbol}".id }}
@@ -91,7 +98,20 @@ module Hoop
       {% end %}
     end
 
+    macro method(method_name, args = nil, returnType = nil, crystal_method = nil)
+      {% if crystal_method == "initialize" %}
+        objc_method_helper(nsclass.send_msg("alloc"), {{method_name}}, {{args}}, {{returnType}}, {{crystal_method}})
+      {% else %}
+        objc_method_helper(self.to_objc, {{method_name}}, {{args}}, {{returnType}}, {{crystal_method}})
+      {% end %}
+    end
+
     macro objc_static_method(method_name, args = nil, returnType = nil, crystal_method = nil)
+      {{ "##{crystal_method ||= method_name}".id }}
+      objc_method_helper(nsclass.obj.as(Pointer(UInt8)), {{method_name}}, {{args}}, {{returnType}}, {{"self.#{crystal_method.id}"}})
+    end
+
+    macro static_method(method_name, args = nil, returnType = nil, crystal_method = nil)
       {{ "##{crystal_method ||= method_name}".id }}
       objc_method_helper(nsclass.obj.as(Pointer(UInt8)), {{method_name}}, {{args}}, {{returnType}}, {{"self.#{crystal_method.id}"}})
     end

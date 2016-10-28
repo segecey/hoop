@@ -2,9 +2,9 @@ module Hoop
   class NSHost < NSObject
     register_class
 
-    objc_static_method "currentHost", nil, "NSHost", "current_host"
-    objc_method "localizedName", nil, "NSString", "localized_name"
-    objc_method "addresses", nil, "NSArray", "addresses"
-    objc_method "address", nil, "NSString", "address"
+    static_method "currentHost", nil, "NSHost", "current_host"
+    method "localizedName", nil, "NSString", "localized_name"
+    method "addresses", nil, "NSArray", "addresses"
+    method "address", nil, "NSString", "address"
   end
 end

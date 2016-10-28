@@ -2,7 +2,7 @@ module Hoop
   class NSString < NSObject
     register_class
 
-    objc_method "initWithUTF8String:", ["const_char_ptr"], "instancetype", "initialize"
+    method "initWithUTF8String:", ["const_char_ptr"], "instancetype", "initialize"
 
     def to_s(io)
       io << String.new(Hoop.send_msg(to_objc, "UTF8String"))
@@ -12,9 +12,9 @@ module Hoop
       self
     end
 
-    objc_method "length", nil, "NSUInteger"
-    objc_method "characterAtIndex:", ["NSUInteger"], "unichar", "[]"
+    method "length", nil, "NSUInteger"
+    method "characterAtIndex:", ["NSUInteger"], "unichar", "[]"
     # NSStringEncoding
-    objc_method "dataUsingEncoding:", ["NSStringEncoding"], "NSData", "data_using_encoding"
+    method "dataUsingEncoding:", ["NSStringEncoding"], "NSData", "data_using_encoding"
   end
 end
