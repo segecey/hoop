@@ -25,7 +25,7 @@ class HoopView < NSView
   method "hoopClassName", nil, "NSString", "hoop_class_name"
 end
 
-LibHoop.dump_objc_methods(convert_to_nsclass(NSView))
+LibHoop.dump_objc_methods(nsclass(NSView))
 
 hoop_lib = HoopLib.new
 hoop_lib.set_test_text "test text"

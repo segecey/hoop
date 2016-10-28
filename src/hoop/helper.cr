@@ -5,7 +5,7 @@ module Hoop
     end
   end
 
-  def convert_to_nsclass(klass : Class)
+  def nsclass(klass : Class)
     return klass.nsclass.obj
   end
 end
