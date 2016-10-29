@@ -26,7 +26,7 @@ lib LibCF
     KNilOptions = 0
   end
 
-  fun nslog = NSLog(UInt8*, ...)
+  fun nslog = NSLog(UInt8*, ...) : Void
 
   fun force : Void
 end

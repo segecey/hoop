@@ -1,5 +1,4 @@
 class Object
-
 end
 
 struct Nil
@@ -8,7 +7,7 @@ struct Nil
   end
 
   def to_id
-    #AnyObject.new(to_objc)
+    # AnyObject.new(to_objc)
   end
 end
 
@@ -30,7 +29,25 @@ struct Float
   end
 end
 
-struct Int
+struct Int32
+  def to_objc
+    self
+  end
+
+  def to_nsuinteger
+    self.to_u64
+  end
+
+  def to_nsinteger
+    self.to_i64
+  end
+
+  def to_cgfloat
+    self.to_f64.to_cgfloat
+  end
+end
+
+struct Int64
   def to_objc
     self
   end

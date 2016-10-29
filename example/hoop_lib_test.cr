@@ -25,8 +25,7 @@ class HoopView < NSView
   method "hoopClassName", nil, "NSString", "hoop_class_name"
 end
 
-LibHoop.dump_objc_methods(nsclass(NSView))
-
+LibHoop.dump_objc_methods(HoopView.to_nsclass)
 hoop_lib = HoopLib.new
 hoop_lib.set_test_text "test text"
 hoop_lib.test
@@ -51,4 +50,7 @@ block_test_value = hoop_lib.new_block_test(->(hoop_lib_self : UInt8*, hoop_view 
   return 1
 })
 
+LibCF.nslog("hello - %@ - %d".to_nsstring, "merhaba".to_nsstring, 1)
+ns_log "multi args string: '%@'' - int: '%d'", "test", 123
+ns_log "one arg"
 ns_log "block test value: #{block_test_value}"

@@ -257,6 +257,7 @@
 				DA15BBFF1DC0E6D300667E56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

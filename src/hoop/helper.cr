@@ -4,8 +4,10 @@ module Hoop
       LibAppKit.ns_application_main nil.to_objc, nil
     end
   end
+end
 
-  def nsclass(klass : Class)
-    return klass.nsclass.obj
+class Class
+  def to_nsclass
+    self.nsclass.obj
   end
 end
