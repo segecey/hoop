@@ -9,7 +9,7 @@
 #import "HoopLib.h"
 #import <QuartzCore/QuartzCore.h>
 
-int setup(){
+int setup() {
     return 1;
 }
 
@@ -18,11 +18,12 @@ int setup(){
 @end
 
 @implementation HoopLib
-- (void)blockTest:(void(id, NSString*))p {
+- (void)blockTest:(void(id, NSString *))p {
     p(self, @"hello, from block");
 }
 
-- (NSString*) newBlockTest:(void(id, id)) p andOtherBlock:(void(NSString*, NSString*))pp {
+
+- (NSString *)newBlockTest:(void(id, id))p andOtherBlock:(void(NSString *, NSString *))pp {
     HoopView *tmpView = [[HoopView alloc] init];
     [tmpView setHoopClassName:@"Hoop::View"];
     p(self, tmpView);
@@ -31,7 +32,7 @@ int setup(){
     return @"Hello !!1";
 }
 
-- (void) test {
+- (void)test {
     NSLog(@"it works");
 }
 @end

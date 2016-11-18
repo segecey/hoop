@@ -1,10 +1,13 @@
 require "./../src/hoop"
 include Hoop
 
-a = IOBluetoothDevice.paired_devices.as(NSArray)
-i = 0
-while i < a.count
-  sel = (a.object_at_index = i).as(IOBluetoothDevice)
-  puts sel.get_name
-  i += 1
+devices = IOBluetoothDevice.paired_devices
+
+if devices.count > 0
+	devices.each do |device|
+		device = device.as(IOBluetoothDevice)
+		puts device.name
+	end
+else
+	ns_log "Device not found!"	
 end

@@ -5,6 +5,6 @@ module Hoop
     register_class
     static_method "pairedDevices", nil, "NSArray", "paired_devices"
     method "addressString", nil, "NSString", "address_string"
-    method "getName", nil, "NSString", "get_name"
+    method "getName", nil, "NSString", "name"
   end
 end
