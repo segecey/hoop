@@ -245,7 +245,7 @@ module Hoop
             {% if i == 0 %}
               {{ a = "v@:@" }}
             {% else %}
-              {{ a += tmp_char }}
+              {{ a = a + tmp_char }}
               {% if tmp_char == ":" %}
                 {{ tmp_char = "@" }}
               {% else %}

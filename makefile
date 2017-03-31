@@ -1,0 +1,2 @@
+build: $(SRC)
+	clang HoopLib/HoopLib/HoopLib.m -fobjc-arc -fmodules -mmacosx-version-min=10.6 -o hoop_lib.o -c && ar rcs hoop_lib.a hoop_lib.o && rm hoop_lib.o && mv hoop_lib.a HoopLib/HoopLib/hoop_lib.a
