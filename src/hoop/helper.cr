@@ -11,3 +11,9 @@ class Class
     self.nsclass.obj
   end
 end
+
+class Object
+  def to(object)
+    return object.new(self)
+  end
+end
