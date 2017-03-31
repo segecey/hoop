@@ -30,8 +30,8 @@ hoop_lib = HoopLib.new
 hoop_lib.set_test_text "test text"
 hoop_lib.test
 hoop_lib.block_test ->(x : UInt8*, y : UInt8*) {
-  x = HoopLib.new(x)
-  y = NSString.new(y)
+  x = x.to(HoopLib)
+  y = y.to(NSString)
   ns_log y
   ns_log x.test_text
   return 1
