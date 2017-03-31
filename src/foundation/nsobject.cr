@@ -221,8 +221,8 @@ module Hoop
     end
 
     macro export(method_name, selector = nil, types_encoding = nil)
-      {{ "##{selector ||= method_name}".id }}
-      {{ "##{types_encoding ||= "v@:"}".id }}
+      {{ "##{selector = selector || method_name}".id }}
+      {{ "##{types_encoding = types_encoding || "v@:"}".id }}
       x_{{@type.name.id}}_{{method_name.id}}_imp = ->(obj : UInt8*, _cmd : LibObjC::SEL {% for t, i in types_encoding[3..-1].chars %}{{", a#{i} : UInt8*".id}}{% end %}) {
         ptr = LibObjC.objc_getAssociatedObject(obj, @@x_{{@type.name.id}}_assoc_key)
         if ptr.null?
