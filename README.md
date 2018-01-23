@@ -1,6 +1,6 @@
 ## hoop
 
-## How to try ?
+## How to try ?
 
 ```shell
 git clone git@github.com:0x73/hoop.git
@@ -79,7 +79,7 @@ NSApp.run
 $ crystal app.cr
 ```
 
-## Contributing
+## Contributing
 
 1. Fork it ( https://github.com/hoopcr/hoop/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
